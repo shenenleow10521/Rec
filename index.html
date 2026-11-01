@@ -6,7 +6,7 @@
 <title>Pick &amp; Place | Group 4 | REC Team Recruitment 2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tektur:wdth,wght@75..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 @property --ang { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
 
@@ -61,6 +61,7 @@ h1,h2,h3,p{margin:0}
 /* ---------- stage ---------- */
 .stage{position:relative;z-index:1;min-height:100vh;min-height:100svh;scroll-snap-align:start;display:flex;align-items:center;padding:96px 88px 88px 56px;overflow:hidden}
 .wrap{width:100%;max-width:1320px;margin:0 auto}
+@media (min-width:1700px){.wrap{max-width:1520px}}
 .h-stage{font-family:var(--display);font-variation-settings:'wdth' 112;font-weight:800;font-size:clamp(38px,5.2vw,78px);line-height:.98;letter-spacing:.01em;color:var(--cyan);text-transform:uppercase;text-shadow:0 0 28px rgba(63,227,242,.35)}
 .lede{font-size:clamp(17px,1.35vw,21px);color:var(--mute);max-width:46ch;margin-top:18px}
 .lede strong{color:var(--ice);font-weight:500}
@@ -338,6 +339,100 @@ h1,h2,h3,p{margin:0}
 .bubble::after{content:"";position:absolute;right:30px;top:100%;border:7px solid transparent;border-top-color:var(--cyan)}
 .bubble.show{opacity:1;transform:none}
 
+/* ---------- presentation scale: bigger, projector-friendly type ---------- */
+body{font-size:20px}
+.lede{font-size:clamp(19px,1.55vw,25px);max-width:44ch}
+.count{font-size:13.5px}
+.rail em{font-size:12.5px}
+.hero-team .ev{font-size:15px}
+.hint{font-size:14px}
+.dept .job{font-size:clamp(16px,1.25vw,19px)}
+.names li{font-size:clamp(20px,1.7vw,26px)}
+.rules span{font-size:clamp(14px,1.05vw,16px);padding:8px 12px}
+.step .t{font-size:clamp(18px,1.45vw,22px)}
+.step .t small{font-size:clamp(15px,1.1vw,17px)}
+.step .p{font-size:clamp(22px,1.8vw,28px)}
+.score-l{font-size:14px}
+.cube-label{font-size:15px;padding:5px 10px}
+.cube-cap{font-size:18px}
+
+/* ledger */
+.ledger{margin-top:26px}
+.lrow{gap:32px;padding:22px 14px;margin:0 -14px;border-radius:10px;transition:background .3s}
+.lrow:hover{background:rgba(63,227,242,.04)}
+.lrow .rule{font-size:clamp(17px,1.35vw,21px);color:#A9C0D2}
+.lrow .rule cite{font-size:13.5px;color:var(--cyan);margin-bottom:6px;opacity:.85}
+.lrow .ours{gap:16px;align-items:center}
+.lrow .ours svg{width:40px;height:40px;padding:9px;margin:0;border-radius:50%;background:rgba(63,227,242,.1);border:1px solid rgba(63,227,242,.45);box-shadow:0 0 22px rgba(63,227,242,.22);box-sizing:border-box;overflow:visible}
+.lrow:last-child .ours svg{background:rgba(134,169,255,.1);border-color:rgba(134,169,255,.5);box-shadow:0 0 22px rgba(134,169,255,.22)}
+.lrow .ours b{font-size:clamp(19px,1.65vw,25px);line-height:1.2}
+.lrow .ours small{display:block;font-size:clamp(15px,1.15vw,17px);margin-top:4px;line-height:1.45;color:#A9C0D2}
+.clear p{font-size:clamp(16px,1.25vw,19px);max-width:44ch}
+
+/* circuit */
+.circ .wrap{grid-template-columns:minmax(0,1fr) clamp(320px,26vw,400px);gap:clamp(24px,2.6vw,44px)}
+.board{min-width:780px}
+.elabel{font-size:19px;fill:#A9C0D2}
+.node{width:17%;min-height:15.5%;padding:12px 14px;border-radius:12px;background:linear-gradient(180deg,rgba(21,46,72,.96),rgba(13,31,51,.96))}
+.node::after{content:"";position:absolute;top:10px;right:10px;width:7px;height:7px;border-radius:50%;background:var(--accent,var(--cyan));box-shadow:0 0 8px var(--accent,var(--cyan));opacity:.35;transition:opacity .3s}
+.node[aria-pressed="true"]::after,.node:hover::after{opacity:1}
+.node b{font-size:clamp(14px,1.28vw,20px);padding-right:12px}
+.node span{font-size:clamp(12.5px,.98vw,15.5px);margin-top:3px}
+.node[aria-pressed="true"]{background:linear-gradient(180deg,rgba(30,64,96,.98),rgba(15,36,58,.98))}
+.detail{padding:26px;min-height:400px}
+.detail img{height:clamp(150px,13vw,200px);margin-bottom:20px}
+.detail .role{font-size:16px}
+.detail h3{font-size:clamp(24px,2vw,30px);margin:4px 0 16px}
+.detail ul{gap:11px}
+.detail li{font-size:clamp(17px,1.35vw,20px);gap:12px}
+.detail li::before{width:8px;height:8px;margin-top:10px}
+.detail .rulenote{font-size:clamp(15px,1.15vw,17px);margin-top:20px;padding-top:16px}
+
+/* testing */
+.test-tag{font-size:14px}
+.test-cycle{font-size:clamp(14px,1.1vw,17px)}
+.test-cycle small{font-size:13.5px}
+.test-panel{padding:28px 30px}
+.test-panel-head{font-size:13.5px}
+.test-list li{grid-template-columns:44px minmax(0,1fr);gap:18px;padding:22px 0}
+.test-list li::before{width:40px;height:40px;display:grid;place-items:center;padding:0;border-radius:50%;border:1px solid rgba(63,227,242,.45);background:rgba(63,227,242,.08);font-size:14px;box-shadow:0 0 16px rgba(63,227,242,.2)}
+.test-list h3{font-size:clamp(20px,1.85vw,28px)}
+.test-list p{font-size:clamp(16px,1.25vw,19px);color:#A9C0D2}
+
+/* thanks */
+.roll div{font-size:clamp(17px,1.3vw,20px)}
+.roll em{font-size:14px}
+
+
+/* compact layout for shorter screens (laptops, 720p projectors) */
+.circ .wrap{grid-template-columns:minmax(0,1fr) clamp(300px,24vw,380px)}
+.node{width:17.5%}
+.node b{font-size:clamp(13px,1.12vw,18px)}
+@media (min-width:1001px) and (max-height:880px){
+  .stage{padding-top:72px;padding-bottom:92px}
+  .h-stage{font-size:clamp(34px,4.3vw,62px)}
+  .lede{margin-top:12px}
+  .ledger{margin-top:16px}
+  .lrow{padding:13px 14px}
+  .clear{margin-top:14px}
+  .cube-scene{height:min(440px,58vh)}
+  .circ .lede{font-size:clamp(17px,1.3vw,21px)}
+  .detail{min-height:0;padding:20px}
+  .detail img{height:clamp(110px,16vh,170px);margin-bottom:14px}
+  .detail h3{margin-bottom:12px}
+  .test-list li{padding:15px 0}
+  .test-panel{padding:22px 26px}
+  .steps{margin-top:18px}.step{padding:10px 14px}.scorebar{margin-top:16px;padding-top:16px}
+}
+@media (min-width:1001px) and (max-height:760px){
+  .h-stage{font-size:clamp(30px,3.7vw,52px)}
+  .circ .lede,.env .clear{display:none}
+  .lrow .ours small{font-size:15px}
+  .lrow .rule{font-size:17px}
+  .lrow .ours b{font-size:20px}
+  .test-list p{font-size:16px}
+  .test-list h3{font-size:21px}
+}
 /* ---------- responsive ---------- */
 @media (max-width:1000px){
   html{scroll-snap-type:none}
@@ -744,17 +839,17 @@ const NODES={
  hc:{x:1050,y:240,name:'HC-05',role:'Bluetooth module',pts:['Wireless interface','Remote control link'],rule:'Bluetooth is an allowed link (Handbook 4.3.2)',modes:['power','signal']},
  nano:{x:800,y:240,name:'Arduino Nano',role:'System controller',img:'nano',pts:['System controller','Command processing','Actuation output'],modes:['power','signal']},
  buck:{x:555,y:240,name:'MP1584EN',role:'Buck converter',pts:['Voltage step-down','High efficiency','Logic protection'],modes:['power']},
- fuse:{x:320,y:400,name:'5A ceramic fuse',role:'Overcurrent protection',pts:['Overcurrent protection','Thermal fail-safe','Hardware defence'],modes:['power']},
- batt:{x:100,y:400,name:'7.4V 2S LiPo',role:'Battery',img:'battery',pts:['High discharge rate','Stable motor response under load'],rule:'Below the 9 V nominal limit (Handbook 4.3.2)',modes:['power']},
+ fuse:{x:330,y:400,name:'5A ceramic fuse',role:'Overcurrent protection',pts:['Overcurrent protection','Thermal fail-safe','Hardware defence'],modes:['power']},
+ batt:{x:108,y:400,name:'7.4V 2S LiPo',role:'Battery',img:'battery',pts:['High discharge rate','Stable motor response under load'],rule:'Below the 9 V nominal limit (Handbook 4.3.2)',modes:['power']},
  l298:{x:800,y:500,name:'L298N',role:'Motor driver',pts:['Dual H-bridge architecture','Direction and speed control'],modes:['power','signal']},
  motors:{x:1050,y:500,name:'Drive motors',role:'Actuation',pts:['Driven by the L298N’s two H-bridge channels','Responds to speed and direction commands'],modes:['power','signal']}
 };
 const EDGES=[
- {d:'M193 400H227',m:{power:1}},
- {d:'M320 360V240H462',m:{power:1},lab:{power:['Logic supply',395,226]}},
+ {d:'M203 400H225',m:{power:1}},
+ {d:'M330 360V240H450',m:{power:1},lab:{power:['Logic supply',318,305,'end']}},
  {d:'M648 240H707',m:{power:1}},
- {d:'M320 440V500H707',m:{power:1},lab:{power:['Motor supply',520,486]}},
- {d:'M893 240H957',m:{power:1,signal:-1},lab:{signal:['UART',925,226]}},
+ {d:'M330 440V500H695',m:{power:1},lab:{power:['Motor supply',520,486]}},
+ {d:'M893 240H957',m:{power:1,signal:-1},lab:{signal:['UART',925,312]}},
  {d:'M1050 200V110',m:{signal:-1},wl:1,lab:{signal:['Bluetooth',1070,160,'start']}},
  {d:'M800 280V460',m:{signal:1},lab:{signal:['PWM + direction',812,375,'start']}},
  {d:'M893 500H957',m:{power:1,signal:1}}
