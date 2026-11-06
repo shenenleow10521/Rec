@@ -749,6 +749,87 @@ body{font-size:20px}
 @media(max-width:1000px){.stage.showroom{padding:78px 24px 92px}.showroom .wrap{height:auto;min-height:900px}.rs-topline{position:relative;gap:20px;align-items:flex-start;line-height:1.6}.rs-topline strong{max-width:25ch;text-align:right}.rs-copy{position:relative;top:auto;width:100%;margin-top:35px}.rs-title{font-size:clamp(42px,8vw,72px)}.rs-title span{display:inline}.rs-title span:first-child::after{content:' '}.rs-summary{max-width:45ch;margin:20px 0}.rs-meta{display:none}.rs-viewport{inset:230px -24px 110px -24px;min-height:470px}.rs-console{bottom:0;flex-wrap:wrap;padding:12px}.rs-status{order:3;max-width:none;width:100%;text-align:left}.rs-hero-label{display:none}.rs-focus{max-width:none}.rs-camera,.rs-actions{gap:3px}.rs-console button{font-size:10px;padding:9px}.rs-viewport canvas{touch-action:pan-y}}
 @media(max-width:550px){.showroom .wrap{min-height:880px}.rs-title{font-size:42px}.rs-eyebrow{font-size:9px;margin-bottom:17px}.rs-summary{font-size:14px;max-width:36ch}.rs-viewport{inset:285px -24px 130px -24px;min-height:390px}.rs-console{gap:8px}.rs-topline{font-size:8px}.rs-topline strong{max-width:20ch}.rs-focus button{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.rs-fallback,.rs-console button,.rs-focus button{transition:none}}
+
+/* ---------- programming: three authored software surfaces ---------- */
+.stage.programming{padding:76px 60px 88px 40px;background:radial-gradient(ellipse at 50% 40%,#123b5240,transparent 70%)}
+.programming .wrap{max-width:1700px}
+.pg-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:30px}
+.pg-kicker{font:11px var(--mono);letter-spacing:.16em;color:#67dce4;margin-bottom:14px}
+.pg-heading .h-stage{font-size:clamp(35px,4.15vw,70px);letter-spacing:-.02em}
+.pg-heading .pg-intro{font:15px/1.6 Arial,sans-serif;color:#89a9bc;margin-top:16px;max-width:64ch}
+.pg-total{font:400 92px/.8 Arial,sans-serif;color:#b8edf21c;letter-spacing:-.07em;padding-bottom:6px;flex-shrink:0}
+.pg-total small{display:block;font:9px var(--mono);letter-spacing:.18em;color:#6d9baf;margin-top:14px;text-align:right}
+.pg-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;align-items:stretch}
+.pg-card{min-width:0;position:relative;overflow:hidden;border:1px solid #79bdcf30;border-radius:16px;background:linear-gradient(155deg,#112f4199,#091a2bd9);box-shadow:0 20px 55px #0002;transition:border-color .3s,box-shadow .3s}
+.pg-card:hover,.pg-card:focus-within{border-color:#67d8df75;box-shadow:0 18px 65px #0004,0 0 35px #48d9e708}
+.pg-card-top{display:flex;align-items:center;justify-content:space-between;padding:18px 20px 0;font:10px var(--mono);letter-spacing:.08em;color:#6596ad}
+.pg-card-top b{font-weight:400;color:#9bbccf}
+.pg-art{height:clamp(250px,31svh,330px);position:relative;display:flex;align-items:center;justify-content:center;padding:20px;perspective:1000px;isolation:isolate}
+.pg-art.with-action{padding-bottom:45px}
+.pg-art::before{content:'';position:absolute;inset:12% 7%;border-radius:50%;background:radial-gradient(ellipse,#35d5e315,transparent 70%);z-index:-1}
+.pg-copy{padding:0 24px 22px;border-top:1px solid #6ec4d31c}
+.pg-copy h3{font:600 clamp(24px,2.2vw,35px)/1.14 var(--display);color:#e2f2f8;margin:21px 0 12px}
+.pg-copy p{font:14px/1.65 Arial,sans-serif;color:#82a4b9;min-height:46px;max-width:38ch}
+.pg-tech{font:9px var(--mono);letter-spacing:.08em;color:#5793ab;line-height:1.6;margin-top:17px}
+.pg-footer{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:24px;padding-top:16px;border-top:1px solid #7bc4d21c;font:10px var(--mono);letter-spacing:.04em;color:#638a9f}
+.pg-footer strong{font-weight:400;color:#91bacb}
+/* Firmware: terminal, source lines and a live illustrative pipeline. */
+.pg-terminal{width:100%;height:225px;border:1px solid #619aac40;border-radius:10px;background:linear-gradient(130deg,#06131fe8,#0b1e2f);box-shadow:0 20px 35px #0004;transform:rotateY(7deg) rotateZ(-1deg);overflow:hidden}
+.pg-window-bar{height:31px;display:flex;align-items:center;padding:0 12px;gap:5px;background:#18304166;border-bottom:1px solid #7eb5c91a;font:9px var(--mono);letter-spacing:.03em;color:#6c9bb0}
+.pg-window-bar>i{width:4px;height:4px;border-radius:50%;background:#588498}.pg-window-bar>i:first-child{background:#77c5ca}.pg-window-bar>span{margin-left:auto}
+.pg-code{padding:12px 10px 10px 0;margin:0;font:11.5px/1.95 var(--mono);color:#b5d1de;white-space:normal}
+.pg-code-row{display:block;white-space:pre;padding-left:12px;border-left:2px solid transparent;transition:background .18s,border-color .18s}
+.pg-code-row>i{font-style:normal;display:inline-block;width:24px;color:#41697f}.pg-code-row.is-active{background:#43e1df10;border-color:#58ded7}
+.pg-code .kw{color:#b6a8eb}.pg-code .fn{color:#79dbdb}.pg-code .str{color:#edc38d}
+.pg-terminal-bottom{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:10px 13px;border-top:1px solid #7eb5c91a;font:9px var(--mono);color:#5d93a9}
+.pg-terminal-bottom output{color:#70d9d4;max-width:24ch;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pg-art-action{position:absolute;bottom:9px;right:20px;z-index:4}
+.pg-button{font:10px var(--mono);letter-spacing:.02em;color:#8dc5d3;border:1px solid #76bfcd35;background:#0d293ae0;border-radius:5px;cursor:pointer;padding:8px 11px;transition:.2s}
+.pg-button:hover{color:#d0fbf7;border-color:#64d6db}
+.pg-caret{display:inline-block;width:4px;height:10px;background:#78e2dc;vertical-align:middle;animation:pgBlink 1.2s steps(2) infinite;animation-play-state:paused}
+.programming.in .pg-caret{animation-play-state:running}
+@keyframes pgBlink{50%{opacity:0}}
+/* Remote: local UI preview, no physical robot connection. */
+.pg-phone-shell{--phone-scale:.94;position:relative;animation:pgPhone 7s ease-in-out infinite;animation-play-state:paused;transform:scale(var(--phone-scale))}
+.programming.in .pg-phone-shell{animation-play-state:running}
+@keyframes pgPhone{0%,100%{transform:translateY(0) scale(var(--phone-scale))}50%{transform:translateY(-5px) scale(var(--phone-scale))}}
+.pg-phone{width:178px;height:270px;padding:17px 10px 10px;border:2px solid #86acbe80;border-radius:25px;background:linear-gradient(145deg,#2a4252,#0c1d2b 25%,#142d3d);box-shadow:9px 20px 35px #0006,inset 0 0 0 3px #06121e;position:relative;transform:rotateY(-13deg) rotateZ(3deg)}
+.pg-phone::before{content:'';position:absolute;top:7px;left:68px;width:39px;height:4px;border-radius:4px;background:#05111b}
+.pg-phone-screen{height:100%;border-radius:14px;background:radial-gradient(ellipse at 50% 20%,#163b50,#081b2b);padding:9px;overflow:hidden}
+.pg-phone-head{display:flex;justify-content:space-between;font:600 9px Arial,sans-serif;letter-spacing:.05em;color:#c7e1e9;margin-bottom:7px}
+.pg-phone-head small{font:6px var(--mono);color:#6aa6b3}
+.pg-phone-field{height:54px;border:1px solid #579eaf20;border-radius:7px;overflow:hidden;background-image:linear-gradient(#67aebe0a 1px,transparent 1px),linear-gradient(90deg,#67aebe0a 1px,transparent 1px);background-size:13px 13px;position:relative}
+.pg-phone-field svg{display:block;width:100%;height:100%}.pg-remote-unit{transition:transform .22s ease-out}
+.pg-pad{display:grid;grid-template-columns:repeat(3,29px);grid-template-rows:repeat(3,25px);gap:4px;justify-content:center;margin:9px 0 7px}
+.pg-pad button{padding:0;display:grid;place-items:center;color:#9bceda;font:13px Arial,sans-serif;cursor:pointer;border:1px solid #75c1d335;border-radius:6px;background:#1a405567;transition:background .18s,border-color .18s}
+.pg-pad button:hover,.pg-pad button:focus-visible{color:#dbffff;border-color:#70e0df;background:#256170}
+.pg-pad button[data-pg-command=F]{grid-column:2}.pg-pad button[data-pg-command=L]{grid-row:2;grid-column:1}.pg-pad button[data-pg-command=S]{grid-row:2;grid-column:2;color:#d4b2b9}.pg-pad button[data-pg-command=R]{grid-row:2;grid-column:3}.pg-pad button[data-pg-command=B]{grid-row:3;grid-column:2}
+.pg-claws{display:flex;gap:6px;margin-bottom:7px}.pg-claws button{flex:1;cursor:pointer;font:7px var(--mono);padding:5px 3px;background:#16364a;color:#8ebccb;border:1px solid #6ab7c629;border-radius:4px}.pg-claws button[aria-pressed=true]{border-color:#64d9d3;color:#c4f2eb}
+.pg-speed-label{display:flex;justify-content:space-between;align-items:center;font:7px var(--mono);color:#729fb4}
+.pg-speed{width:100%;height:3px;accent-color:#58d9db;cursor:pointer;margin:5px 0 0}
+.pg-phone-floor{position:absolute;left:13px;right:13px;bottom:-18px;height:13px;border-radius:50%;background:#0007;filter:blur(5px);z-index:-1}
+/* Presentation: a miniature live browser that changes slides. */
+.pg-browser{width:100%;max-width:350px;transform:rotateY(-8deg) rotateZ(1deg);border:1px solid #5a9bad66;border-radius:10px;overflow:hidden;box-shadow:0 18px 35px #0005;background:#071727}
+.pg-browser .pg-window-bar>span{margin-left:8px;background:#06141e55;border-radius:4px;padding:4px 9px;font-size:8px;flex:1;text-align:center}
+.pg-browser-screen{height:170px;position:relative;background:radial-gradient(ellipse at 75% 50%,#18546655,transparent 80%),#071a29}
+.pg-mini-slide{height:100%;position:absolute;inset:0;padding:19px 20px;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.pg-mini-slide[hidden]{display:none}
+.pg-mini-slide>small{font:7px var(--mono);letter-spacing:.12em;color:#6dc3d0;margin-bottom:13px;z-index:2}
+.pg-mini-slide h4{font:700 28px/.95 var(--display);letter-spacing:.01em;color:#3fe3f2;text-shadow:0 0 17px #3fe3f225;z-index:2}
+.pg-mini-slide p{font:8px Arial,sans-serif;line-height:1.6;color:#81a8bd;margin-top:12px;z-index:2}
+.pg-mini-orbit{position:absolute;right:-45px;top:20px;width:185px;height:185px;border:1px solid #4bc6d63b;border-radius:50%;transform:rotateX(55deg);box-shadow:0 0 0 20px #3fe3f205,0 0 0 40px #3fe3f204}
+.pg-mini-slide.model{padding:13px 14px;justify-content:flex-start}.pg-mini-slide.model img{position:absolute;right:-22px;bottom:-10px;width:93%;height:100%;object-fit:contain;mix-blend-mode:lighten}.pg-mini-slide.model h4{font-size:18px;max-width:9ch;position:relative;z-index:2}
+.pg-mini-slide.wiring{padding:15px}.pg-mini-slide.wiring svg{height:130px;width:100%}.pg-mini-slide.wiring>small{margin-bottom:6px}
+.pg-browser-bottom{height:30px;padding:0 12px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid #6eb5c41f;font:8px var(--mono);color:#6397af}
+.pg-mini-dots{display:flex;gap:4px}.pg-mini-dots i{width:4px;height:4px;border-radius:4px;background:#315168;transition:width .25s,background .25s}.pg-mini-dots i.is-active{width:14px;background:#55d4dd}
+.pg-running .pg-terminal{box-shadow:0 15px 40px #0005,0 0 35px #55e3df10}
+.pg-link{height:2px;position:absolute;bottom:0;left:24px;right:24px;overflow:hidden;background:#64b5c21c}.pg-link::after{content:'';display:block;width:30%;height:2px;background:linear-gradient(90deg,transparent,#77e5e0,transparent);transform:translateX(-110%);opacity:0}
+.pg-running .pg-link::after{animation:pgPacket 1.2s ease-in-out}
+@keyframes pgPacket{0%{transform:translateX(-110%);opacity:0}25%{opacity:1}100%{transform:translateX(440%);opacity:0}}
+@media(min-width:1001px) and (max-height:780px){.stage.programming{padding:64px 56px 76px 36px}.pg-heading{margin-bottom:21px}.pg-heading .h-stage{font-size:clamp(32px,3.5vw,54px)}.pg-heading .pg-intro{font-size:13px;margin-top:12px}.pg-total{font-size:72px}.pg-art{height:222px;padding:15px}.pg-terminal{height:179px}.pg-window-bar{height:26px}.pg-code{font-size:10px;line-height:1.8;padding-top:8px;padding-bottom:8px}.pg-terminal-bottom{padding:8px 10px;font-size:8px}.pg-phone-shell{--phone-scale:.76}.pg-browser-screen{height:125px}.pg-mini-slide{padding:13px}.pg-mini-slide>small{margin-bottom:8px}.pg-mini-slide p{margin-top:8px}.pg-mini-slide h4{font-size:24px}.pg-copy{padding:0 20px 18px}.pg-copy h3{font-size:25px;margin-top:17px;margin-bottom:10px}.pg-copy p{font-size:13px;min-height:44px}.pg-tech{font-size:8px;margin-top:12px}.pg-footer{margin-top:18px;padding-top:13px}}
+@media(max-width:1000px){.stage.programming{padding:82px 24px 90px}.pg-grid{grid-template-columns:1fr;gap:25px;max-width:600px;margin:0 auto}.pg-heading{align-items:flex-start}.pg-heading .h-stage{font-size:clamp(33px,5.8vw,52px)}.pg-heading .pg-intro{font-size:14px}.pg-total{font-size:64px}.pg-total small{font-size:8px}.pg-art{height:310px;padding:25px 40px}.pg-terminal{max-width:420px}.pg-code{font-size:13px}.pg-browser{max-width:390px}.pg-copy p{max-width:none;min-height:0}.pg-footer{flex-direction:column;align-items:flex-start;gap:9px}.pg-phone-shell{--phone-scale:1}}
+@media(max-width:550px){.pg-heading{gap:12px}.pg-heading .h-stage{font-size:32px;max-width:10ch;line-height:1.05}.pg-total{font-size:52px;padding-top:6px}.pg-art{padding:20px;height:295px}.pg-code{font-size:11px}.pg-copy h3{font-size:28px}.pg-heading .pg-intro{max-width:27ch}.pg-footer{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.pg-phone-shell,.pg-caret,.pg-running .pg-link::after{animation:none!important}.pg-phone-shell{transform:scale(var(--phone-scale))}.pg-card,.pg-code-row,.pg-button,.pg-remote-unit,.pg-mini-dots i{transition:none}}
 </style>
 </head>
 <body>
@@ -768,7 +849,7 @@ body{font-size:20px}
 <div class="brand" aria-hidden="true"><b>GROUP 4</b><span>REC Team 2026/27 Recruitment 2</span></div>
 <nav class="rail" aria-label="Slides"></nav>
 <div class="dock">
-  <div class="count" aria-live="polite"><strong id="cNow">01</strong> / <span id="cAll">08</span> <span id="cName" style="margin-left:10px"></span></div>
+  <div class="count" aria-live="polite"><strong id="cNow">01</strong> / <span id="cAll">09</span> <span id="cName" style="margin-left:10px"></span></div>
   <div class="dock-actions">
     <button class="chip-btn" id="fsBtn" type="button" aria-label="Full screen (F)"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 5V1h4M9 1h4v4M13 9v4H9M5 13H1V9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><kbd>F</kbd></button>
     <button class="chip-btn" id="prevBtn" type="button" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2L4 7l5 5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
@@ -991,7 +1072,40 @@ body{font-size:20px}
  <text class="dw-guide-footer" x="1412" y="734">24/26 AWG + Dupont connections</text>
 </g></g></svg><div class="dw-bottom"><article class="dw-readout" id="eDetail" aria-live="polite"><p class="mech-kicker">05 / CONTROL</p><h3>Arduino Nano</h3><ul><li>Processes serial commands and sends motor-control outputs.</li><li>Controls the two SG90 servos for the claw and arm.</li></ul></article><span class="e-status" id="eStatus" role="status">Power on · motors forward</span></div></div><p class="dw-caption">SELECT OR TAB TO A COMPONENT TO TRACE ITS CONNECTIONS · PRESENTATION WIRING: CONFIRM FIRMWARE PIN ASSIGNMENTS · ANIMATED SIGNALS ARE ILLUSTRATIVE</p><dialog class="dw-dialog" id="dwDialog" aria-label="Full-size hand-built wiring diagram"><header><span>COMPLETE WIRING · VECTOR INSPECTION</span><button type="button" id="dwInspectClose" autofocus>Close ×</button></header><div class="dw-dialog-body"><svg viewBox="0 0 1750 775" role="img" aria-label="Full-size vector drawing of the complete wire connections"><use href="#dwArtwork"/></svg></div></dialog></div></section>
 
-<!-- 8 THANKS -->
+<!-- 8 PROGRAMMING -->
+<section class="stage programming" id="programming" data-name="Programming department" aria-labelledby="pgTitle">
+ <div class="wrap">
+  <header class="pg-heading"><div><p class="pg-kicker" data-r>PROGRAMMING DEPARTMENT / GROUP 4</p><h2 class="h-stage" id="pgTitle">Code. Control. Present.</h2><p class="pg-intro" data-r style="--d:1">Three things we built: the firmware, the controller and this presentation.</p></div><div class="pg-total" aria-hidden="true" data-r style="--d:2">03<small>SOFTWARE BUILDS</small></div></header>
+  <div class="pg-grid">
+   <article class="pg-card" data-r style="--d:2">
+    <div class="pg-card-top"><span>01 / EMBEDDED</span><b>ARDUINO NANO</b></div>
+    <div class="pg-art with-action">
+     <div class="pg-terminal"><div class="pg-window-bar"><i></i><i></i><i></i><span>firmware.ino · logic preview</span></div><pre class="pg-code"><code><span class="pg-code-row"><i>01</i><span class="kw">void</span> <span class="fn">loop</span>() {</span><span class="pg-code-row" data-pg-step="0"><i>02</i>  Command cmd = <span class="fn">readBluetooth</span>();</span><span class="pg-code-row" data-pg-step="1"><i>03</i>  Motion act = <span class="fn">decode</span>(cmd);</span><span class="pg-code-row" data-pg-step="2"><i>04</i>  <span class="fn">applyDrive</span>(act);</span><span class="pg-code-row" data-pg-step="3"><i>05</i>  <span class="fn">applyClaws</span>(act);</span><span class="pg-code-row"><i>06</i>}</span></code></pre><div class="pg-terminal-bottom"><span>ILLUSTRATIVE FLOW</span><output id="pgLog" aria-live="polite">Ready for a command <span class="pg-caret"></span></output></div></div>
+     <button class="pg-button pg-art-action" type="button" id="pgRun">Run sequence ↗</button>
+    </div>
+    <div class="pg-copy"><h3>Nano firmware</h3><p>Bluetooth command handling, with motor and servo control logic on the Arduino Nano.</p><div class="pg-tech">ARDUINO C++ / COMMANDS / ACTUATION</div></div><div class="pg-link" aria-hidden="true"></div>
+   </article>
+   <article class="pg-card" data-r style="--d:3">
+    <div class="pg-card-top"><span>02 / INTERFACE</span><b>MOBILE CONTROLLER</b></div>
+    <div class="pg-art">
+     <div class="pg-phone-shell"><div class="pg-phone"><div class="pg-phone-screen"><div class="pg-phone-head"><span>REC PAD</span><small>LOCAL UI PREVIEW</small></div><div class="pg-phone-field"><svg viewBox="0 0 140 54" role="img" aria-label="Small robot controlled only inside this interface preview"><g class="pg-remote-unit" id="pgRemoteUnit"><rect x="56" y="16" width="28" height="25" rx="5" fill="#2187b5" stroke="#8cdde7"/><rect x="51" y="21" width="6" height="16" rx="2" fill="#162b38" stroke="#c1c568"/><rect x="83" y="21" width="6" height="16" rx="2" fill="#162b38" stroke="#c1c568"/><rect x="62" y="22" width="16" height="10" rx="2" fill="#0c283b"/><path id="pgMiniLeftClaw" d="M57 16V10h6" fill="none" stroke="#8aebe5" stroke-width="2"/><path id="pgMiniRightClaw" d="M83 16V10h-6" fill="none" stroke="#8aebe5" stroke-width="2"/></g></svg></div><div class="pg-pad" aria-label="Direction preview controls"><button type="button" data-pg-command="F" aria-label="Move preview robot forward">↑</button><button type="button" data-pg-command="L" aria-label="Move preview robot left">←</button><button type="button" data-pg-command="S" aria-label="Stop preview command">□</button><button type="button" data-pg-command="R" aria-label="Move preview robot right">→</button><button type="button" data-pg-command="B" aria-label="Move preview robot backward">↓</button></div><div class="pg-claws"><button type="button" data-pg-claw="left" aria-pressed="false">L CLAW</button><button type="button" data-pg-claw="right" aria-pressed="false">R CLAW</button></div><label class="pg-speed-label" for="pgSpeed"><span>SPEED</span><span><output id="pgSpeedValue" for="pgSpeed">60</output>%</span></label><input class="pg-speed" id="pgSpeed" type="range" min="20" max="100" step="10" value="60" aria-label="Preview speed level"></div></div><div class="pg-phone-floor" aria-hidden="true"></div></div>
+    </div>
+    <div class="pg-copy"><h3>Remote control</h3><p>A mobile interface for direction commands, independent claw actions and speed input.</p><div class="pg-tech">DIRECTION / CLAWS / SPEED · UI DEMO</div></div><div class="pg-link" aria-hidden="true"></div>
+   </article>
+   <article class="pg-card" data-r style="--d:4">
+    <div class="pg-card-top"><span>03 / PRESENTATION</span><b>THIS WEBSITE</b></div>
+    <div class="pg-art with-action">
+     <div class="pg-browser"><div class="pg-window-bar"><i></i><i></i><i></i><span>group4 / rec</span></div><div class="pg-browser-screen" aria-live="polite"><div class="pg-mini-slide" data-pg-slide="0"><small>GROUP 4 / REC TEAM</small><h4>PICK &amp;<br>PLACE</h4><p>From an idea<br>to a built prototype.</p><div class="pg-mini-orbit" aria-hidden="true"></div></div><div class="pg-mini-slide model" data-pg-slide="1" hidden><small>PHOTO-DERIVED DISPLAY MODEL</small><h4>MEET THE<br>MACHINE.</h4><img src="assets/robot-preview.webp" width="1200" height="920" alt="Static render of our photo-derived robot model on its display plinth"></div><div class="pg-mini-slide wiring" data-pg-slide="2" hidden><small>WIRING &amp; PROTECTION</small><svg viewBox="0 0 290 140" role="img" aria-label="Miniature power and control diagram"><g fill="none" stroke="#42667d" stroke-width="2"><path d="M48 37h38m47 0h35m46 0h35M110 56v52h58m46 0h35M191 56v30h-45v22"/></g><g fill="#12364b" stroke="#62bac5"><rect x="6" y="20" width="42" height="36" rx="5"/><rect x="86" y="20" width="47" height="36" rx="5"/><rect x="168" y="20" width="46" height="36" rx="5"/><rect x="249" y="20" width="34" height="36" rx="5"/><rect x="168" y="92" width="46" height="33" rx="5"/><circle cx="267" cy="108" r="14"/></g><g fill="#a5d7e1" font-family="monospace" font-size="6" text-anchor="middle"><text x="27" y="42">7.4 V</text><text x="110" y="42">FUSE</text><text x="191" y="42">NANO</text><text x="266" y="42">RX</text><text x="191" y="112">DRIVER</text><text x="267" y="112">M</text></g><path d="M48 37h38m47 0h35" fill="none" stroke="#65e6df" stroke-width="2"/></svg></div></div><div class="pg-browser-bottom"><span id="pgMiniCount">01 / 03</span><div class="pg-mini-dots" aria-hidden="true"><i class="is-active" data-pg-dot="0"></i><i data-pg-dot="1"></i><i data-pg-dot="2"></i></div><span>HTML / CSS / JS</span></div></div>
+     <button class="pg-button pg-art-action" id="pgNextSlide" type="button">Next slide →</button>
+    </div>
+    <div class="pg-copy"><h3>Interactive slides</h3><p>This HTML presentation brings the robot, animated circuits and 3D showroom into one story.</p><div class="pg-tech">HTML / CSS / JAVASCRIPT / SVG + 3D</div></div><div class="pg-link" aria-hidden="true"></div>
+   </article>
+  </div>
+  <footer class="pg-footer"><strong>WONG TZE SAN · LEOW SHEN EN</strong><span>ONE TEAM / THREE SOFTWARE BUILDS</span></footer>
+ </div>
+</section>
+
+<!-- 9 THANKS -->
 <section class="stage thanks" id="thanks" data-name="Thank you" aria-labelledby="thxH">
   <canvas id="rain" aria-hidden="true"></canvas>
   <svg class="traces" style="right:0;top:0;width:340px;height:260px;transform:scaleX(-1)" viewBox="0 0 340 260" aria-hidden="true">
@@ -1448,6 +1562,39 @@ electronicsStage.querySelectorAll('.dw-component').forEach(component=>{
  component.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();component.dispatchEvent(new MouseEvent('click',{bubbles:true}));}});
 });
 // Keep the complete circuit visible initially; inspection dims unrelated traces.
+
+/* Programming department: local, illustrative software previews. */
+const pgStage=document.getElementById('programming'),pgLog=document.getElementById('pgLog');
+const pgMotion=matchMedia('(prefers-reduced-motion: reduce)');
+const pgRows=[...pgStage.querySelectorAll('[data-pg-step]')];
+let pgTimers=[],pgVisible=false,pgCommandIndex=0,pgMiniIndex=0,pgX=0,pgY=0;
+function pgClear(){pgTimers.forEach(clearTimeout);pgTimers=[];pgStage.classList.remove('pg-running');}
+function pgRun(command){
+ pgClear();pgRows.forEach(row=>row.classList.remove('is-active'));
+ const states=['RX '+command,'Decode command','Apply drive logic','Update claw logic'];
+ if(pgMotion.matches){pgLog.textContent=command+' · logic preview';pgRows[3].classList.add('is-active');return;}
+ pgStage.classList.add('pg-running');pgLog.textContent=states[0];pgRows[0].classList.add('is-active');
+ for(let step=1;step<4;step++)pgTimers.push(setTimeout(()=>{pgRows.forEach((row,index)=>row.classList.toggle('is-active',index===step));pgLog.textContent=states[step];},step*280));
+ pgTimers.push(setTimeout(()=>{pgStage.classList.remove('pg-running');pgLog.textContent=command+' · preview complete';},1250));
+}
+document.getElementById('pgRun').addEventListener('click',()=>{const commands=['FWD','LEFT','GRIP','STOP'];pgRun(commands[pgCommandIndex++%commands.length]);});
+pgStage.querySelectorAll('[data-pg-command]').forEach(button=>button.addEventListener('click',()=>{
+ const command=button.dataset.pgCommand,step=4+Number(document.getElementById('pgSpeed').value)/20;
+ if(command==='F')pgY-=step;if(command==='B')pgY+=step;if(command==='L')pgX-=step;if(command==='R')pgX+=step;
+ pgX=Math.max(-28,Math.min(28,pgX));pgY=Math.max(-8,Math.min(8,pgY));document.getElementById('pgRemoteUnit').style.transform=`translate(${pgX}px,${pgY}px)`;
+ pgRun({F:'FWD',B:'REV',L:'LEFT',R:'RIGHT',S:'STOP'}[command]);
+}));
+pgStage.querySelectorAll('[data-pg-claw]').forEach(button=>button.addEventListener('click',()=>{
+ const closed=button.getAttribute('aria-pressed')!=='true';button.setAttribute('aria-pressed',String(closed));const side=button.dataset.pgClaw;
+ document.getElementById(side==='left'?'pgMiniLeftClaw':'pgMiniRightClaw').setAttribute('transform',closed?`translate(${side==='left'?3:-3} 0)`:'translate(0 0)');pgRun((side==='left'?'L':'R')+' CLAW '+(closed?'CLOSE':'OPEN'));
+}));
+document.getElementById('pgSpeed').addEventListener('input',event=>{document.getElementById('pgSpeedValue').textContent=event.target.value;pgRun('SPEED '+event.target.value);});
+document.getElementById('pgNextSlide').addEventListener('click',()=>{
+ const slides=[...pgStage.querySelectorAll('[data-pg-slide]')];pgMiniIndex=(pgMiniIndex+1)%slides.length;
+ slides.forEach((slide,index)=>slide.hidden=index!==pgMiniIndex);pgStage.querySelectorAll('[data-pg-dot]').forEach((dot,index)=>dot.classList.toggle('is-active',index===pgMiniIndex));document.getElementById('pgMiniCount').textContent=String(pgMiniIndex+1).padStart(2,'0')+' / 03';
+});
+new IntersectionObserver(entries=>{pgVisible=entries[0].isIntersecting;if(!pgVisible)pgClear();},{threshold:.1}).observe(pgStage);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)pgClear();});pgMotion.addEventListener('change',()=>{if(pgMotion.matches)pgClear();});
 
 /* ================= BOOT ================= */
 let booting=!RM;
