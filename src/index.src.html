@@ -723,7 +723,7 @@ body{font-size:20px}
 <div class="brand" aria-hidden="true"><b>GROUP 4</b><span>REC Team 2026/27 Recruitment 2</span></div>
 <nav class="rail" aria-label="Slides"></nav>
 <div class="dock">
-  <div class="count" aria-live="polite"><strong id="cNow">01</strong> / <span id="cAll">09</span> <span id="cName" style="margin-left:10px"></span></div>
+  <div class="count" aria-live="polite"><strong id="cNow">01</strong> / <span id="cAll">07</span> <span id="cName" style="margin-left:10px"></span></div>
   <div class="dock-actions">
     <button class="chip-btn" id="fsBtn" type="button" aria-label="Full screen (F)"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 5V1h4M9 1h4v4M13 9v4H9M5 13H1V9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><kbd>F</kbd></button>
     <button class="chip-btn" id="prevBtn" type="button" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2L4 7l5 5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
@@ -913,29 +913,7 @@ body{font-size:20px}
  <text class="dw-gauge-body" x="1431" y="735">Nano · servos · HC-05</text>
 </g></g></svg><div class="dw-bottom"><article class="dw-readout" id="eDetail" aria-live="polite"><p class="mech-kicker">05 / CONTROL</p><h3>Arduino Nano</h3><ul><li>Processes serial commands and sends motor-control outputs.</li><li>Controls the two SG90 servos for the claw and arm.</li></ul></article><span class="e-status" id="eStatus" role="status">Power on · motors forward</span></div></div><p class="dw-caption">SELECT OR TAB TO A COMPONENT TO TRACE ITS CONNECTIONS · PRESENTATION WIRING: CONFIRM FIRMWARE PIN ASSIGNMENTS · ANIMATED SIGNALS ARE ILLUSTRATIVE</p><dialog class="dw-dialog" id="dwDialog" aria-label="Full-size hand-built wiring diagram"><header><span>COMPLETE WIRING · VECTOR INSPECTION</span><button type="button" id="dwInspectClose" autofocus>Close ×</button></header><div class="dw-dialog-body"><svg viewBox="0 0 1750 775" role="img" aria-label="Full-size vector drawing of the complete wire connections"><use href="#dwArtwork"/></svg></div></dialog></div></section>
 
-<!-- 7 SAFETY -->
-<section class="stage circ power" id="power" data-name="Safety systems" aria-labelledby="powH">
-  <div class="wrap">
-    <div class="circ-top">
-      <div><h2 class="h-stage" id="powH">Safety systems</h2><p class="lede" data-r style="--d:2">Follow the power from the battery. Select any part to see what it does.</p></div>
-    </div>
-    <div class="board-scroll"><div class="board" data-mode="power" data-start="batt"></div></div>
-    <aside class="detail" aria-live="polite" data-r="right" style="--d:4"></aside>
-  </div>
-</section>
-
-<!-- 8 LOGIC -->
-<section class="stage circ logic" id="logic" data-name="Logic routing" aria-labelledby="logH">
-  <div class="wrap">
-    <div class="circ-top">
-      <div><h2 class="h-stage" id="logH">Hardware logic routing</h2><p class="lede" data-r style="--d:2">Follow a command from the operator’s controller to the wheels.</p></div>
-    </div>
-    <div class="board-scroll"><div class="board" data-mode="signal" data-start="nano"></div></div>
-    <aside class="detail" aria-live="polite" data-r="right" style="--d:4"></aside>
-  </div>
-</section>
-
-<!-- 9 THANKS -->
+<!-- 7 THANKS -->
 <section class="stage thanks" id="thanks" data-name="Thank you" aria-labelledby="thxH">
   <canvas id="rain" aria-hidden="true"></canvas>
   <svg class="traces" style="right:0;top:0;width:340px;height:260px;transform:scaleX(-1)" viewBox="0 0 340 260" aria-hidden="true">
@@ -961,7 +939,6 @@ body{font-size:20px}
 (()=>{
 const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const NS='http://www.w3.org/2000/svg';
-const IMG={battery:'%%battery%%',nano:'%%nano%%'};
 function el(tag,attrs,parent){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e;}
 
 /* ================= FIELD ================= */
@@ -1114,64 +1091,6 @@ function Match(svg,opt){
   reset();
   return {play,pause,reset,finish,get running(){return running}};
 }
-
-/* ================= CIRCUIT ================= */
-const NODES={
- ctrl:{x:1050,y:70,name:'Controller',role:'Operator input',pts:['Held by the team’s one robot operator','Talks to the robot over Bluetooth'],rule:'One operator controls the robot (Handbook 4.3.1)',modes:['signal']},
- hc:{x:1050,y:240,name:'HC-05',role:'Bluetooth module',pts:['Wireless interface','Remote control link'],rule:'Bluetooth is an allowed link (Handbook 4.3.2)',modes:['power','signal']},
- nano:{x:800,y:240,name:'Arduino Nano',role:'System controller',img:'nano',pts:['System controller','Command processing','Actuation output'],modes:['power','signal']},
- buck:{x:555,y:240,name:'MP1584EN',role:'Buck converter',pts:['Voltage step-down','High efficiency','Logic protection'],modes:['power']},
- fuse:{x:330,y:400,name:'5A ceramic fuse',role:'Overcurrent protection',pts:['Overcurrent protection','Thermal fail-safe','Hardware defence'],modes:['power']},
- batt:{x:108,y:400,name:'18650 Li-ion pack (~7.4 V)',role:'Battery',img:'battery',pts:['High discharge rate','Stable motor response under load'],rule:'Below the 9 V nominal limit (Handbook 4.3.2)',modes:['power']},
- l298:{x:800,y:500,name:'L298N',role:'Motor driver',pts:['Dual H-bridge architecture','Direction and speed control'],modes:['power','signal']},
- motors:{x:1050,y:500,name:'Drive motors',role:'Actuation',pts:['Driven by the L298N’s two H-bridge channels','Responds to speed and direction commands'],modes:['power','signal']}
-};
-const EDGES=[
- {d:'M203 400H225',m:{power:1}},
- {d:'M330 360V240H450',m:{power:1},lab:{power:['Logic supply',318,305,'end']}},
- {d:'M648 240H707',m:{power:1}},
- {d:'M330 440V500H695',m:{power:1},lab:{power:['Motor supply',520,486]}},
- {d:'M893 240H957',m:{power:1,signal:-1},lab:{signal:['UART',925,312]}},
- {d:'M1050 200V110',m:{signal:-1},wl:1,lab:{signal:['Bluetooth',1070,160,'start']}},
- {d:'M800 280V460',m:{signal:1},lab:{signal:['PWM + direction',812,375,'start']}},
- {d:'M893 500H957',m:{power:1,signal:1}}
-];
-const ORDER={power:{batt:0,fuse:1,buck:2,l298:2,nano:3,motors:3,hc:4,ctrl:5},signal:{ctrl:0,hc:1,nano:2,l298:3,motors:4,buck:5,fuse:5,batt:5}};
-function buildBoard(board){
-  const mode=board.dataset.mode,col=mode==='power'?'#3FE3F2':'#86A9FF';
-  const svg=el('svg',{viewBox:'0 0 1200 600','aria-hidden':'true'},board);
-  const defs=el('defs',{},svg);const f=el('filter',{id:'bf'+mode,x:'-50%',y:'-50%',width:'200%',height:'200%'},defs);
-  el('feGaussianBlur',{stdDeviation:'4',result:'b'},f);const m=el('feMerge',{},f);el('feMergeNode',{in:'b'},m);el('feMergeNode',{in:'SourceGraphic'},m);
-  for(const e of EDGES){
-    const dir=e.m[mode];
-    el('path',e.wl?{d:e.d,class:'edge-base','stroke-dasharray':'8 10'}:{d:e.d,class:'edge-base eb',pathLength:1},svg);
-    if(dir){
-      for(let k=0;k<2;k++){
-        const p=el('path',{d:e.d,class:'edge-beam on'+(dir<0?' rev':'')+(e.wl?' wl':''),stroke:col,filter:`url(#bf${mode})`},svg);
-        p.style.animationDelay=(-k*1.1)+'s';
-      }
-    }
-    if(e.lab&&e.lab[mode]){const [s,x,y,a]=e.lab[mode];const t=el('text',{x,y,class:'elabel','text-anchor':a||'middle'},svg);t.textContent=s;}
-  }
-  const panel=board.closest('.wrap').querySelector('.detail');
-  const btns={};
-  for(const k in NODES){
-    const n=NODES[k];
-    const b=document.createElement('button');b.type='button';b.className='node'+(n.modes.includes(mode)?'':' dim');
-    b.style.left=(n.x/12)+'%';b.style.top=(n.y/6)+'%';b.style.setProperty('--d',ORDER[mode][k]);
-    b.setAttribute('aria-pressed','false');
-    b.innerHTML=`<b>${n.name}</b><span>${n.role}</span>`;
-    b.addEventListener('click',()=>select(k));
-    board.appendChild(b);btns[k]=b;
-  }
-  function select(k){
-    const n=NODES[k];
-    for(const j in btns)btns[j].setAttribute('aria-pressed',j===k?'true':'false');
-    panel.innerHTML=`<div class="swap">${n.img?`<img src="${IMG[n.img]}" alt="">`:''}<p class="role">${n.role}</p><h3>${n.name}</h3><ul>${n.pts.map(p=>`<li>${p}</li>`).join('')}</ul>${n.rule?`<p class="rulenote">${n.rule}</p>`:''}</div>`;
-  }
-  select(board.dataset.start);
-}
-document.querySelectorAll('.board').forEach(buildBoard);
 
 /* ================= DECRYPT ================= */
 const GLY='#%&@$*+=<>/\\01XZKAEH';
