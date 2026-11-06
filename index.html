@@ -546,6 +546,55 @@ body{font-size:20px}
 @media(min-width:1001px) and (max-height:780px){.stage.pickup{padding-top:64px;padding-bottom:76px}.pickup-head{margin-bottom:18px}.pickup-head .h-stage{font-size:clamp(36px,4vw,64px)}.pickup-svg{max-height:43svh;min-height:220px}.pickup-lab-top{padding:16px 20px}.pickup-feature{padding:12px 16px;gap:14px;grid-template-columns:90px 1fr}.pickup-feature img{width:90px;height:74px}.pickup-feature h3{font-size:22px;margin:4px 0 7px}.pickup-feature p{font-size:15px}.pickup-detail{gap:12px}}
 @media(max-width:1000px){.stage.pickup{padding:80px 24px 90px}.pickup-layout{grid-template-columns:1fr}.pickup-head{align-items:flex-start;flex-direction:column}.pickup-head>p{max-width:none}.pickup-svg{max-height:none;min-height:0}.pickup-feature{grid-template-columns:100px 1fr;padding:16px}.pickup-feature img{width:100px}.pickup-status{margin-left:0}}
 @media(prefers-reduced-motion:reduce){.pickup.in .pickup-feature img{animation:none}.pickup-feature,.pickup-controls button{transition:none}}
+
+/* ---------- electronics: power and protection ---------- */
+.stage.electronics{padding:72px 64px 88px 40px}
+.electronics .wrap{max-width:1760px}
+.e-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:26px}
+.e-head .h-stage{font-size:clamp(38px,4.5vw,76px)}
+.e-head>p{font:13px var(--mono);color:var(--mute);line-height:1.6}
+.e-layout{display:grid;grid-template-columns:1.25fr 1fr;gap:26px;align-items:stretch}
+.e-board{border:1px solid #3fe3f245;border-radius:20px;overflow:hidden;position:relative;background:radial-gradient(ellipse at 50% 35%,#19496188,transparent 65%),linear-gradient(#3fe3f207 1px,transparent 1px),linear-gradient(90deg,#3fe3f207 1px,transparent 1px),#0b1d2e;background-size:auto,28px 28px,28px 28px,auto}
+.e-board-top{padding:20px 24px;font:12px var(--mono);letter-spacing:.08em;color:var(--cyan);display:flex;justify-content:space-between}
+.e-svg{width:100%;height:auto;max-height:47svh;display:block}
+.e-svg text{font-family:var(--mono);fill:#a3bdcf;font-size:15px}
+.e-svg .e-node-title{font-size:20px;fill:#e6f5ff;font-weight:bold}
+.e-track{fill:none;stroke:#31546b;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.e-current{fill:none;stroke:#3fe3f2;stroke-width:3;stroke-dasharray:4 17;stroke-linecap:round;filter:drop-shadow(0 0 5px #3fe3f2);animation:eCurrent 1.4s linear infinite;animation-play-state:paused}
+.e-current.signal{stroke:#94abff;filter:drop-shadow(0 0 4px #7999ff);animation-duration:2s}
+.electronics.in:not(.e-paused):not(.e-trip) .e-current{animation-play-state:running}
+.e-component{fill:#0d283e;stroke:#45657a;stroke-width:1.5;transition:stroke .3s,filter .3s,opacity .3s}
+.electronics[data-focus=battery] .e-battery,.electronics[data-focus=fuse] .e-fuse,.electronics[data-focus=nano] .e-nano,.electronics[data-focus=divider] .e-divider{stroke:#3fe3f2;filter:drop-shadow(0 0 9px #3fe3f245)}
+.e-cell{fill:#3fe3f2;opacity:.7;animation:eCharge 3s ease-in-out infinite;animation-play-state:paused}
+.electronics.in:not(.e-paused):not(.e-trip) .e-cell{animation-play-state:running}
+.e-cell:nth-child(2){animation-delay:.2s}.e-cell:nth-child(3){animation-delay:.4s}
+.e-led{fill:#3fe3f2;filter:drop-shadow(0 0 5px #3fe3f2);animation:eLed 1.2s steps(2) infinite;animation-play-state:paused}
+.electronics.in:not(.e-paused):not(.e-trip) .e-led{animation-play-state:running}
+.e-fuse-link{stroke:#3fe3f2;stroke-width:5;fill:none;transition:stroke .25s,opacity .25s}
+.e-fuse-break{opacity:0;stroke:#ff6b80;stroke-width:4;fill:none}
+.e-trip .e-fuse-link{opacity:0}.e-trip .e-fuse-break{opacity:1}.e-trip .e-fuse{stroke:#ff6b80;filter:drop-shadow(0 0 8px #ff6b8055)}
+.e-downstream{transition:opacity .5s}.e-trip .e-downstream{opacity:.15}.e-trip .e-led{fill:#4c5a67;filter:none}
+.e-trip .e-current{opacity:0}.e-trip .e-cell{opacity:.4}
+.e-panel{display:grid;gap:12px}
+.e-feature{appearance:none;text-align:left;color:inherit;display:grid;grid-template-columns:64px 1fr;gap:18px;padding:18px 22px;align-items:center;background:linear-gradient(120deg,#15354b99,#0b1d2e);border:1px solid var(--line);border-radius:14px;cursor:pointer;transition:transform .3s,border-color .3s,background .3s}
+.e-feature:hover{transform:translateX(-4px);border-color:#3fe3f270}.e-feature[aria-pressed=true]{border-color:#3fe3f299;background:linear-gradient(120deg,#1a4c6199,#0b1d2e)}
+.e-feature .e-icon{width:64px;height:64px;display:grid;place-items:center;border:1px solid #3fe3f240;border-radius:12px;background:#102b40;font:17px var(--mono);color:var(--cyan);overflow:hidden}
+.e-icon img{width:100%;height:100%;object-fit:cover}.e-feature small{font:11px var(--mono);letter-spacing:.1em;color:var(--cyan)}
+.e-feature h3{font:600 clamp(21px,1.65vw,29px) var(--display);color:var(--ice);margin:5px 0 7px;line-height:1.2}
+.e-feature p{font-size:clamp(15px,1.05vw,19px);line-height:1.45;color:var(--mute)}
+.e-controls{padding:16px 22px 20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--line)}
+.e-controls button{font:12px var(--mono);padding:11px 14px;border:1px solid var(--line);border-radius:8px;background:#0b1b2c;color:var(--ice);cursor:pointer}
+.e-controls button:hover{border-color:var(--cyan);color:var(--cyan)}
+.e-controls #eTrip{color:#ffacb8;border-color:#ff6b8044}
+.e-status{font:11px var(--mono);color:var(--cyan);margin-left:auto;max-width:24ch;line-height:1.5}
+.e-trip .e-status{color:#ffacb8}
+.e-note{font:10px var(--mono);color:var(--mute);padding:0 22px 16px;line-height:1.5}
+@keyframes eCurrent{to{stroke-dashoffset:-84}}
+@keyframes eCharge{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes eLed{0%,100%{opacity:1}50%{opacity:.25}}
+@media(min-width:1001px) and (max-height:780px){.stage.electronics{padding-top:64px;padding-bottom:76px}.e-head{margin-bottom:18px}.e-head .h-stage{font-size:clamp(36px,4vw,64px)}.e-svg{max-height:42svh}.e-feature{padding:12px 16px;gap:14px;grid-template-columns:52px 1fr}.e-feature .e-icon{width:52px;height:52px}.e-feature h3{font-size:21px;margin:4px 0 6px}.e-feature p{font-size:14px}.e-panel{gap:10px}.e-board-top{padding:16px 20px}.e-controls{padding:12px 16px}.e-note{padding-bottom:12px}}
+@media(max-width:1000px){.stage.electronics{padding:80px 24px 90px}.e-layout{grid-template-columns:1fr}.e-head{align-items:flex-start;flex-direction:column}.e-svg{max-height:none}.e-feature{padding:16px}.e-status{margin-left:0}}
+@media(prefers-reduced-motion:reduce){.e-current,.e-cell,.e-led{animation:none!important}.e-component,.e-feature,.e-downstream{transition:none}}
 </style>
 </head>
 <body>
@@ -565,7 +614,7 @@ body{font-size:20px}
 <div class="brand" aria-hidden="true"><b>GROUP 4</b><span>REC Team 2026/27 Recruitment 2</span></div>
 <nav class="rail" aria-label="Slides"></nav>
 <div class="dock">
-  <div class="count" aria-live="polite"><strong id="cNow">01</strong> / <span id="cAll">08</span> <span id="cName" style="margin-left:10px"></span></div>
+  <div class="count" aria-live="polite"><strong id="cNow">01</strong> / <span id="cAll">09</span> <span id="cName" style="margin-left:10px"></span></div>
   <div class="dock-actions">
     <button class="chip-btn" id="fsBtn" type="button" aria-label="Full screen (F)"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 5V1h4M9 1h4v4M13 9v4H9M5 13H1V9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><kbd>F</kbd></button>
     <button class="chip-btn" id="prevBtn" type="button" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2L4 7l5 5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
@@ -725,7 +774,48 @@ body{font-size:20px}
  </div>
 </section>
 
-<!-- 6 SAFETY -->
+<!-- 6 ELECTRONICS -->
+<section class="stage electronics" id="electronics" data-name="Electronics · Power" data-focus="battery" aria-labelledby="electronicsH">
+ <div class="wrap">
+  <header class="e-head"><div><p class="mech-kicker" data-r>ELECTRONICS DEPARTMENT / GROUP 4</p><h2 class="h-stage" id="electronicsH">Power &amp; protection</h2></div><p data-r style="--d:1">Energy in. Commands out.<br>Protection in between.</p></header>
+  <div class="e-layout">
+   <div class="e-board" data-r="zoom" style="--d:2">
+    <div class="e-board-top"><span class="pickup-live">LIVE CIRCUIT DEMO</span><span>POWER + LOGIC</span></div>
+    <svg class="e-svg" viewBox="0 0 900 550" role="img" aria-label="Conceptual power and logic diagram. A roughly 7.4 volt 18650 battery pack supplies a 5 amp ceramic fuse and regulated Nano supply. Nano 5 volt TX passes through a three-resistor divider to the HC-05 3.3 volt RX logic input. Fuse-trip demo isolates downstream power.">
+     <defs><linearGradient id="eChip"><stop stop-color="#225472"/><stop offset="1" stop-color="#10273d"/></linearGradient></defs>
+     <text x="60" y="74" fill="#3fe3f2">01 / PROTECTED POWER</text>
+     <path class="e-track" d="M220 220H310"/><path class="e-current" d="M220 220H310"/>
+     <g class="e-downstream"><path class="e-track" d="M440 220H500M610 220H690"/><path class="e-current" d="M440 220H500M610 220H690"/></g>
+     <g class="e-component e-battery"><rect x="70" y="155" width="150" height="120" rx="16"/><path d="M220 189h12v52h-12"/><path d="M85 141h120" fill="none" stroke-dasharray="3 6"/></g>
+     <g><rect class="e-cell" x="88" y="176" width="30" height="78" rx="6"/><rect class="e-cell" x="130" y="176" width="30" height="78" rx="6"/><rect class="e-cell" x="172" y="176" width="30" height="78" rx="6"/></g>
+     <text class="e-node-title" x="145" y="123" text-anchor="middle">18650 PACK</text><text x="145" y="308" text-anchor="middle">~7.4 V NOMINAL</text>
+     <rect class="e-component e-fuse" x="310" y="190" width="130" height="60" rx="12"/><path d="M323 196v48M427 196v48" stroke="#c5dbe8" stroke-width="9"/>
+     <path class="e-fuse-link" d="M329 220h92"/><path class="e-fuse-break" d="M329 220h22l12-14m24 14h34"/>
+     <text class="e-node-title" x="375" y="155" text-anchor="middle">5 A FUSE</text><text x="375" y="286" text-anchor="middle">HARDWARE DEFENCE</text>
+     <g class="e-downstream"><rect class="e-component" x="500" y="194" width="110" height="52" rx="8"/><text x="555" y="225" text-anchor="middle">REGULATOR</text><text x="555" y="170" text-anchor="middle">LOGIC SUPPLY</text></g>
+     <g class="e-component e-nano"><rect x="690" y="150" width="150" height="135" rx="12" fill="url(#eChip)"/><path d="M708 144v-12m24 12v-12m24 12v-12m24 12v-12m24 12v-12M708 291v12m24-12v12m24-12v12m24-12v12m24-12v12" stroke-width="5"/><rect x="736" y="181" width="58" height="58" rx="5" fill="#081b2d"/><path d="M744 199h42m-42 10h42m-42 10h42" opacity=".6"/></g>
+     <circle class="e-led" cx="716" cy="175" r="4"/><text class="e-node-title" x="765" y="109" text-anchor="middle">ARDUINO NANO</text><text x="765" y="329" text-anchor="middle">SYSTEM CONTROLLER</text>
+     <g class="e-downstream"><text x="60" y="375">02 / LOGIC-LEVEL MATCHING</text>
+      <path class="e-track" d="M765 285V430H650M475 430H340"/><path class="e-current signal" d="M765 285V430H650M475 430H340"/>
+      <rect class="e-component e-divider" x="475" y="392" width="175" height="76" rx="12"/><path d="M487 430h18l5-12 10 24 10-24 10 24 5-12h15l5-12 10 24 10-24 10 24 5-12h15" fill="none" stroke="#9bb4ff" stroke-width="2"/><path d="M562 430v45l-7 5 14 7-14 7 7 4v8m-12 0h24m-19 6h14" stroke="#9bb4ff" fill="none" stroke-width="2"/>
+      <text x="563" y="375" text-anchor="middle">3 RESISTORS</text><text x="692" y="410">5 V TX</text><text x="362" y="410">3.3 V RX</text>
+      <rect class="e-component" x="170" y="392" width="170" height="76" rx="12"/><text class="e-node-title" x="255" y="436" text-anchor="middle">HC-05</text><path d="M191 409v38m6-33v28" stroke="#94abff" fill="none"/>
+     </g>
+    </svg>
+    <div class="e-controls"><button type="button" id="ePause" aria-pressed="false">Pause flow</button><button type="button" id="eTrip" aria-pressed="false">Demo fuse trip</button><span class="e-status" id="eStatus" role="status">Protected power · logic matched</span></div>
+    <p class="e-note">Conceptual flow · illustrative voltages, not live readings · select a component to highlight it.</p>
+   </div>
+   <div class="e-panel" aria-label="Electronics components">
+    <button class="e-feature" type="button" data-part="battery" aria-pressed="true" data-r="right" style="--d:3"><span class="e-icon"><img src="data:image/webp;base64,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" alt="" width="230" height="177"></span><span><small>01 / ENERGY</small><h3>18650 Li-ion · ~7.4 V</h3><p>High energy density and discharge capability support the motors; consistent performance is the design goal.</p></span></button>
+    <button class="e-feature" type="button" data-part="fuse" aria-pressed="false" data-r="right" style="--d:4"><span class="e-icon" aria-hidden="true"><svg width="44" height="30" viewBox="0 0 44 30" fill="none" stroke="currentColor"><path d="M2 15h8m24 0h8" stroke-width="2"/><rect x="10" y="6" width="24" height="18" rx="3"/><path d="M14 6v18m16-18v18M14 15h16" stroke-width="2"/></svg></span><span><small>02 / SAFETY</small><h3>5 A ceramic fuse</h3><p>Overcurrent protection and hardware defence against excessive current and heating.</p></span></button>
+    <button class="e-feature" type="button" data-part="nano" aria-pressed="false" data-r="right" style="--d:5"><span class="e-icon"><img src="data:image/webp;base64,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" alt="" width="128" height="87"></span><span><small>03 / CONTROL</small><h3>Arduino Nano</h3><p>Processes commands and sends actuation outputs to the robot.</p></span></button>
+    <button class="e-feature" type="button" data-part="divider" aria-pressed="false" data-r="right" style="--d:6"><span class="e-icon" aria-hidden="true">5→3.3</span><span><small>04 / SIGNAL</small><h3>3-resistor divider</h3><p>Steps Nano’s 5 V TX signal down to the HC-05 RX pin’s 3.3 V logic level.</p></span></button>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- 7 SAFETY -->
 <section class="stage circ power" id="power" data-name="Safety systems" aria-labelledby="powH">
   <div class="wrap">
     <div class="circ-top">
@@ -736,7 +826,7 @@ body{font-size:20px}
   </div>
 </section>
 
-<!-- 7 LOGIC -->
+<!-- 8 LOGIC -->
 <section class="stage circ logic" id="logic" data-name="Logic routing" aria-labelledby="logH">
   <div class="wrap">
     <div class="circ-top">
@@ -747,7 +837,7 @@ body{font-size:20px}
   </div>
 </section>
 
-<!-- 8 THANKS -->
+<!-- 9 THANKS -->
 <section class="stage thanks" id="thanks" data-name="Thank you" aria-labelledby="thxH">
   <canvas id="rain" aria-hidden="true"></canvas>
   <svg class="traces" style="right:0;top:0;width:340px;height:260px;transform:scaleX(-1)" viewBox="0 0 340 260" aria-hidden="true">
@@ -934,7 +1024,7 @@ const NODES={
  nano:{x:800,y:240,name:'Arduino Nano',role:'System controller',img:'nano',pts:['System controller','Command processing','Actuation output'],modes:['power','signal']},
  buck:{x:555,y:240,name:'MP1584EN',role:'Buck converter',pts:['Voltage step-down','High efficiency','Logic protection'],modes:['power']},
  fuse:{x:330,y:400,name:'5A ceramic fuse',role:'Overcurrent protection',pts:['Overcurrent protection','Thermal fail-safe','Hardware defence'],modes:['power']},
- batt:{x:108,y:400,name:'7.4V 2S LiPo',role:'Battery',img:'battery',pts:['High discharge rate','Stable motor response under load'],rule:'Below the 9 V nominal limit (Handbook 4.3.2)',modes:['power']},
+ batt:{x:108,y:400,name:'18650 Li-ion pack (~7.4 V)',role:'Battery',img:'battery',pts:['High discharge rate','Stable motor response under load'],rule:'Below the 9 V nominal limit (Handbook 4.3.2)',modes:['power']},
  l298:{x:800,y:500,name:'L298N',role:'Motor driver',pts:['Dual H-bridge architecture','Direction and speed control'],modes:['power','signal']},
  motors:{x:1050,y:500,name:'Drive motors',role:'Actuation',pts:['Driven by the L298N’s two H-bridge channels','Responds to speed and direction commands'],modes:['power','signal']}
 };
@@ -1226,10 +1316,24 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnim
 motionPref.addEventListener('change',()=>{if(motionPref.matches){pickupSet(false,pickupTarget);cancelAnimationFrame(pickupFrame);pickupFrame=0;}});
 pickupDraw();
 
+/* Electronics: illustrative current flow and protective fuse demonstration. */
+const electronicsStage=document.getElementById('electronics');
+const ePause=document.getElementById('ePause'),eTrip=document.getElementById('eTrip'),eStatus=document.getElementById('eStatus');
+function eUpdateStatus(){
+ const tripped=electronicsStage.classList.contains('e-trip'),paused=electronicsStage.classList.contains('e-paused');
+ eStatus.textContent=tripped?'Fuse open · downstream isolated':paused?'Flow paused':'Protected power · logic matched';
+}
+electronicsStage.querySelectorAll('[data-part]').forEach(button=>button.addEventListener('click',()=>{
+ electronicsStage.dataset.focus=button.dataset.part;
+ electronicsStage.querySelectorAll('[data-part]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+}));
+ePause.addEventListener('click',()=>{const paused=electronicsStage.classList.toggle('e-paused');ePause.setAttribute('aria-pressed',String(paused));ePause.textContent=paused?'Resume flow':'Pause flow';eUpdateStatus();});
+eTrip.addEventListener('click',()=>{const tripped=electronicsStage.classList.toggle('e-trip');eTrip.setAttribute('aria-pressed',String(tripped));eTrip.textContent=tripped?'Reset demo':'Demo fuse trip';eUpdateStatus();});
+
 /* ================= BOOT ================= */
 let booting=!RM;
 const boot=document.getElementById('boot');
-const LOG=[['> REC TEAM 2026/27  RECRUITMENT 2',''],['> GROUP 4  PICK & PLACE',''],['  battery    7.4V 2S LiPo','OK'],['  fuse       5A ceramic','OK'],['  regulator  MP1584EN','OK'],['  driver     L298N','READY'],['  link       HC-05 Bluetooth','PAIRED'],['  envelope   200 x 200 x 200 mm','PASS'],['> launching','']];
+const LOG=[['> REC TEAM 2026/27  RECRUITMENT 2',''],['> GROUP 4  PICK & PLACE',''],['  battery    18650 Li-ion ~7.4V','OK'],['  fuse       5A ceramic','OK'],['  regulator  MP1584EN','OK'],['  driver     L298N','READY'],['  link       HC-05 Bluetooth','PAIRED'],['  envelope   200 x 200 x 200 mm','PASS'],['> launching','']];
 function startHero(){
   heroField.classList.add('on');
   document.getElementById('heroSvg').classList.add('drawn');
