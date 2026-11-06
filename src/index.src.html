@@ -547,85 +547,30 @@ body{font-size:20px}
 @media(max-width:1000px){.stage.pickup{padding:80px 24px 90px}.pickup-layout{grid-template-columns:1fr}.pickup-head{align-items:flex-start;flex-direction:column}.pickup-head>p{max-width:none}.pickup-svg{max-height:none;min-height:0}.pickup-feature{grid-template-columns:100px 1fr;padding:16px}.pickup-feature img{width:100px}.pickup-status{margin-left:0}}
 @media(prefers-reduced-motion:reduce){.pickup.in .pickup-feature img{animation:none}.pickup-feature,.pickup-controls button{transition:none}}
 
-/* ---------- electronics: power and protection ---------- */
-.stage.electronics{padding:72px 64px 88px 40px}
-.electronics .wrap{max-width:1760px}
-.e-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:26px}
-.e-head .h-stage{font-size:clamp(38px,4.5vw,76px)}
-.e-head>p{font:13px var(--mono);color:var(--mute);line-height:1.6}
-.e-layout{display:grid;grid-template-columns:1.25fr 1fr;gap:26px;align-items:stretch}
-.e-board{border:1px solid #3fe3f245;border-radius:20px;overflow:hidden;position:relative;background:radial-gradient(ellipse at 50% 35%,#19496188,transparent 65%),linear-gradient(#3fe3f207 1px,transparent 1px),linear-gradient(90deg,#3fe3f207 1px,transparent 1px),#0b1d2e;background-size:auto,28px 28px,28px 28px,auto}
-.e-board-top{padding:20px 24px;font:12px var(--mono);letter-spacing:.08em;color:var(--cyan);display:flex;justify-content:space-between}
-.e-svg{width:100%;height:auto;max-height:47svh;display:block}
-.e-svg text{font-family:var(--mono);fill:#a3bdcf;font-size:15px}
-.e-svg .e-node-title{font-size:20px;fill:#e6f5ff;font-weight:bold}
-.e-track{fill:none;stroke:#31546b;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
-.e-current{fill:none;stroke:#3fe3f2;stroke-width:3;stroke-dasharray:4 17;stroke-linecap:round;filter:drop-shadow(0 0 5px #3fe3f2);animation:eCurrent 1.4s linear infinite;animation-play-state:paused}
-.e-current.signal{stroke:#94abff;filter:drop-shadow(0 0 4px #7999ff);animation-duration:2s}
-.electronics.in:not(.e-paused):not(.e-trip) .e-current{animation-play-state:running}
-.e-component{fill:#0d283e;stroke:#45657a;stroke-width:1.5;transition:stroke .3s,filter .3s,opacity .3s}
-.electronics[data-focus=battery] .e-battery,.electronics[data-focus=fuse] .e-fuse,.electronics[data-focus=nano] .e-nano,.electronics[data-focus=divider] .e-divider{stroke:#3fe3f2;filter:drop-shadow(0 0 9px #3fe3f245)}
-.e-cell{fill:#3fe3f2;opacity:.7;animation:eCharge 3s ease-in-out infinite;animation-play-state:paused}
-.electronics.in:not(.e-paused):not(.e-trip) .e-cell{animation-play-state:running}
-.e-cell:nth-child(2){animation-delay:.2s}.e-cell:nth-child(3){animation-delay:.4s}
-.e-led{fill:#3fe3f2;filter:drop-shadow(0 0 5px #3fe3f2);animation:eLed 1.2s steps(2) infinite;animation-play-state:paused}
-.electronics.in:not(.e-paused):not(.e-trip) .e-led{animation-play-state:running}
-.e-fuse-link{stroke:#3fe3f2;stroke-width:5;fill:none;transition:stroke .25s,opacity .25s}
-.e-fuse-break{opacity:0;stroke:#ff6b80;stroke-width:4;fill:none}
-.e-trip .e-fuse-link{opacity:0}.e-trip .e-fuse-break{opacity:1}.e-trip .e-fuse{stroke:#ff6b80;filter:drop-shadow(0 0 8px #ff6b8055)}
-.e-downstream{transition:opacity .5s}.e-trip .e-downstream{opacity:.15}.e-trip .e-led{fill:#4c5a67;filter:none}
-.e-trip .e-current{opacity:0}.e-trip .e-cell{opacity:.4}
-.e-panel{display:grid;gap:12px}
-.e-feature{appearance:none;text-align:left;color:inherit;display:grid;grid-template-columns:64px 1fr;gap:18px;padding:18px 22px;align-items:center;background:linear-gradient(120deg,#15354b99,#0b1d2e);border:1px solid var(--line);border-radius:14px;cursor:pointer;transition:transform .3s,border-color .3s,background .3s}
-.e-feature:hover{transform:translateX(-4px);border-color:#3fe3f270}.e-feature[aria-pressed=true]{border-color:#3fe3f299;background:linear-gradient(120deg,#1a4c6199,#0b1d2e)}
-.e-feature .e-icon{width:64px;height:64px;display:grid;place-items:center;border:1px solid #3fe3f240;border-radius:12px;background:#102b40;font:17px var(--mono);color:var(--cyan);overflow:hidden}
-.e-icon img{width:100%;height:100%;object-fit:cover}.e-feature small{font:11px var(--mono);letter-spacing:.1em;color:var(--cyan)}
-.e-feature h3{font:600 clamp(21px,1.65vw,29px) var(--display);color:var(--ice);margin:5px 0 7px;line-height:1.2}
-.e-feature p{font-size:clamp(15px,1.05vw,19px);line-height:1.45;color:var(--mute)}
-.e-controls{padding:16px 22px 20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--line)}
-.e-controls button{font:12px var(--mono);padding:11px 14px;border:1px solid var(--line);border-radius:8px;background:#0b1b2c;color:var(--ice);cursor:pointer}
-.e-controls button:hover{border-color:var(--cyan);color:var(--cyan)}
-.e-controls #eTrip{color:#ffacb8;border-color:#ff6b8044}
-.e-status{font:11px var(--mono);color:var(--cyan);margin-left:auto;max-width:24ch;line-height:1.5}
-.e-trip .e-status{color:#ffacb8}
-.e-note{font:10px var(--mono);color:var(--mute);padding:0 22px 16px;line-height:1.5}
-@keyframes eCurrent{to{stroke-dashoffset:-84}}
-@keyframes eCharge{0%,100%{opacity:.35}50%{opacity:1}}
-@keyframes eLed{0%,100%{opacity:1}50%{opacity:.25}}
-@media(min-width:1001px) and (max-height:780px){.stage.electronics{padding-top:64px;padding-bottom:76px}.e-head{margin-bottom:18px}.e-head .h-stage{font-size:clamp(36px,4vw,64px)}.e-svg{max-height:42svh}.e-feature{padding:12px 16px;gap:14px;grid-template-columns:52px 1fr}.e-feature .e-icon{width:52px;height:52px}.e-feature h3{font-size:21px;margin:4px 0 6px}.e-feature p{font-size:14px}.e-panel{gap:10px}.e-board-top{padding:16px 20px}.e-controls{padding:12px 16px}.e-note{padding-bottom:12px}}
-@media(max-width:1000px){.stage.electronics{padding:80px 24px 90px}.e-layout{grid-template-columns:1fr}.e-head{align-items:flex-start;flex-direction:column}.e-svg{max-height:none}.e-feature{padding:16px}.e-status{margin-left:0}}
-@media(prefers-reduced-motion:reduce){.e-current,.e-cell,.e-led{animation:none!important}.e-component,.e-feature,.e-downstream{transition:none}}
-
-/* Unified electronics inspector */
-.e-head .h-stage{font-size:clamp(34px,4.15vw,72px)}
-.e-layout{grid-template-columns:minmax(0,1.55fr) minmax(320px,1fr);gap:24px}
-.e-svg{max-height:51svh;min-height:320px}
-.e-svg text{font-size:17px;stroke:none;fill:#b2cadc}.e-svg .e-node-title{font-size:21px;fill:#e6f5ff}
-.e-component rect{fill:#0d283e}.e-component text{filter:none}
-.electronics[data-focus=buck] .e-buck,.electronics[data-focus=driver] .e-driver,.electronics[data-focus=bluetooth] .e-bluetooth{stroke:#3fe3f2;filter:drop-shadow(0 0 9px #3fe3f245)}
-.e-inspector{display:flex;flex-direction:column;gap:14px;min-width:0}
-.e-inspector-label{font:11px var(--mono);letter-spacing:.12em;color:var(--cyan)}
-.e-selections{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.e-select{text-align:left;cursor:pointer;border:1px solid var(--line);background:linear-gradient(130deg,#15394e99,#0b1c2e);border-radius:10px;padding:12px 14px;transition:border-color .25s,transform .25s}
-.e-select:hover{transform:translateY(-2px);border-color:#3fe3f277}.e-select[aria-pressed=true]{border-color:#3fe3f2;background:#163d52;box-shadow:0 0 24px #3fe3f210}
-.e-select small{display:block;font:10px var(--mono);letter-spacing:.05em;color:var(--cyan);margin-bottom:7px}.e-select b{display:block;font:600 clamp(15px,1.1vw,19px) var(--display);color:var(--ice);line-height:1.3}
-.e-select:last-child{grid-column:1/-1}
-.e-inspect-detail{padding:22px 24px;flex:1;border:1px solid #3fe3f240;border-radius:14px;background:linear-gradient(140deg,#17435a88,#0b1c2e);min-height:180px}
-.e-inspect-detail h3{font:600 clamp(23px,2vw,31px) var(--display);color:var(--ice);line-height:1.2;margin-bottom:18px}
-.e-inspect-detail ul{margin:0;padding:0;list-style:none;display:grid;gap:12px}.e-inspect-detail li{font-size:clamp(15px,1.1vw,19px);line-height:1.5;color:var(--mute);border-left:2px solid #3fe3f270;padding-left:12px}
-.e-inspect-detail.changed{animation:eDetail .45s ease-out}
-@keyframes eDetail{from{opacity:.3;transform:translateY(9px)}to{opacity:1;transform:none}}
-.e-rotor{transform-box:fill-box;transform-origin:center;animation:eSpin 1.3s linear infinite;animation-play-state:paused}
-.electronics.in:not(.e-paused):not(.e-trip) .e-rotor{animation-play-state:running}.e-reverse .e-rotor{animation-direction:reverse}
-@keyframes eSpin{to{transform:rotate(360deg)}}
-.e-radio circle{stroke:#94abff;fill:none;stroke-width:2;opacity:.4;animation:eRadio 2s ease-out infinite;animation-play-state:paused;transform-box:fill-box;transform-origin:center}.e-radio circle:nth-child(2){animation-delay:.4s}.e-radio circle:nth-child(3){animation-delay:.8s}
-.electronics.in:not(.e-paused):not(.e-trip) .e-radio circle{animation-play-state:running}
-@keyframes eRadio{from{opacity:.8;transform:scale(.6)}to{opacity:0;transform:scale(1.3)}}
-.e-trip .e-component:not(.e-battery):not(.e-fuse){opacity:.25}.e-trip .e-radio{opacity:0}.e-trip .e-fuse{opacity:1}
-.e-controls{gap:8px}.e-controls button{padding:10px 12px}.e-status{font-size:10px;max-width:22ch}
-@media(min-width:1001px) and (max-height:780px){.e-svg{max-height:46svh;min-height:275px}.e-inspector{gap:10px}.e-selections{gap:7px}.e-select{padding:9px 12px}.e-select b{font-size:14px}.e-select small{font-size:9px;margin-bottom:5px}.e-inspect-detail{padding:16px;min-height:155px}.e-inspect-detail h3{font-size:23px;margin-bottom:12px}.e-inspect-detail li{font-size:14px}.e-inspect-detail .mech-kicker{margin-bottom:9px}.e-inspect-detail ul{gap:9px}}
-@media(max-width:1000px){.e-layout{grid-template-columns:1fr}.e-svg{max-height:none;min-height:0}.e-inspect-detail{min-height:0}.e-selections{grid-template-columns:1fr 1fr}}
-@media(prefers-reduced-motion:reduce){.e-rotor,.e-radio circle,.e-inspect-detail.changed{animation:none}.e-select{transition:none}}
+/* ---------- complete wiring reference ---------- */
+.stage.wiring{padding:72px 60px 82px 36px}
+.wiring .wrap{max-width:1760px;width:100%}
+.wire-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:20px}
+.wire-head .h-stage{font-size:clamp(28px,3.1vw,50px)}
+.wire-head .mech-kicker{margin-bottom:10px}
+.wire-expand{font:12px var(--mono);color:var(--cyan);border:1px solid #3fe3f260;background:#102c40;border-radius:9px;padding:12px 16px;cursor:pointer;white-space:nowrap;transition:box-shadow .3s,border-color .3s}
+.wire-expand:hover{border-color:var(--cyan);box-shadow:0 0 26px #3fe3f225}
+.wire-figure{margin:0;display:flex;justify-content:center;align-items:center;border:1px solid #3fe3f245;background:#0b1d2e;border-radius:14px;overflow:hidden;box-shadow:0 20px 70px #0004}
+.wire-image-button{all:unset;display:block;cursor:zoom-in;width:100%;text-align:center;line-height:0}
+.wire-image-button:focus-visible{outline:2px solid var(--cyan);outline-offset:-3px}
+.wire-figure img{display:block;width:100%;height:calc(100svh - 240px);object-fit:contain;background:#0b1d2e}
+.wire-dialog{padding:0;max-width:none;max-height:none;width:calc(100vw - 28px);height:calc(100svh - 28px);border:1px solid #3fe3f270;border-radius:12px;background:#0b1d2e;color:var(--ice);overflow:hidden;box-shadow:0 30px 100px #0008}
+.wire-dialog::backdrop{background:#020b16e8;backdrop-filter:blur(8px)}
+.wire-toolbar{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line);height:68px;box-sizing:border-box}
+.wire-toolbar strong{font:12px var(--mono);letter-spacing:.06em;color:var(--cyan);margin-right:auto}
+.wire-toolbar button{font:12px var(--mono);color:var(--ice);border:1px solid var(--line);border-radius:7px;background:#153449;padding:10px 14px;cursor:pointer}
+.wire-toolbar button:hover{border-color:var(--cyan)}
+.wire-toolbar button:disabled{opacity:.35;cursor:default}
+.wire-toolbar output{font:12px var(--mono);min-width:40px;text-align:center}
+.wire-view{height:calc(100% - 68px);overflow:auto;overscroll-behavior:contain;background:#eeeae2}
+.wire-view img{display:block;width:var(--wire-zoom,100%);height:auto;max-width:none}
+@media(max-width:800px){.stage.wiring{padding:78px 22px 86px}.wire-head{align-items:flex-start;flex-direction:column}.wire-figure img{height:auto}.wire-toolbar{padding:10px;gap:6px}.wire-toolbar strong{font-size:10px;max-width:100px;line-height:1.5}.wire-toolbar button{padding:10px}.wire-dialog{width:calc(100vw - 12px);height:calc(100svh - 12px)}}
+@media(prefers-reduced-motion:reduce){.wire-expand{transition:none}}
 </style>
 </head>
 <body>
@@ -806,33 +751,16 @@ body{font-size:20px}
 </section>
 
 <!-- 6 ELECTRONICS -->
-<section class="stage electronics" id="electronics" data-name="Electronics · Unified circuit" data-focus="buck" aria-labelledby="electronicsH">
-<div class="wrap"><header class="e-head"><div><p class="mech-kicker" data-r>ELECTRONICS DEPARTMENT / GROUP 4</p><h2 class="h-stage" id="electronicsH">Power, logic &amp; motion</h2></div><p data-r style="--d:1">One circuit.<br>From battery to both motors.</p></header>
-<div class="e-layout"><div class="e-board" data-r="zoom" style="--d:2"><div class="e-board-top"><span class="pickup-live">UNIFIED CIRCUIT DEMO</span><span>7 COMPONENTS / 2 MOTORS</span></div><svg class="e-svg" viewBox="0 0 980 690" role="img" aria-label="Combined power and control flow. Battery through fuse branches to LM2596 logic supply and L298N motor power. Nano exchanges data with HC-05, with a divider on its TX line, and controls the L298N and two motors. Conceptual diagram, not a wiring guide.">
-<text x="40" y="49">01 / PROTECTED POWER</text>
-<path class="e-track" d="M200 160H270M410 160H520M680 160H760"/><path class="e-current" d="M200 160H270M410 160H520M680 160H760"/>
-<path class="e-track" d="M450 160V560H520"/><path class="e-current" d="M450 160V560H520"/><circle cx="450" cy="160" r="5" fill="#3fe3f2"/>
-<text x="469" y="476" transform="rotate(-90 469 476)">FUSED MOTOR SUPPLY</text>
-<g class="e-component e-battery"><rect x="40" y="110" width="160" height="100" rx="12"/><text class="e-node-title" x="120.0" y="143" text-anchor="middle">18650 PACK</text><text x="120.0" y="172" text-anchor="middle">~7.4 V NOMINAL</text></g><g class="e-component e-fuse"><rect x="270" y="120" width="140" height="80" rx="12"/><text class="e-node-title" x="340.0" y="153" text-anchor="middle">5 A FUSE</text><text x="340.0" y="182" text-anchor="middle">CERAMIC</text></g><g class="e-component e-buck"><rect x="520" y="110" width="160" height="100" rx="12"/><text class="e-node-title" x="600.0" y="143" text-anchor="middle">LM2596</text><text x="600.0" y="172" text-anchor="middle">~7.4 V → 5 V</text></g><g class="e-component e-nano"><rect x="760" y="110" width="170" height="100" rx="12"/><text class="e-node-title" x="845.0" y="143" text-anchor="middle">NANO</text><text x="845.0" y="172" text-anchor="middle">CONTROLLER</text></g>
-<path class="e-fuse-link" d="M290 222h100"/><path class="e-fuse-break" d="M290 222h32l12-12m24 12h32"/>
-<text x="600" y="246" text-anchor="middle">150 kHz SWITCHING</text><circle class="e-led" cx="914" cy="126" r="4"/>
-<text x="40" y="302">02 / BLUETOOTH + LOGIC</text>
-<path class="e-track" d="M840 210V372H640M490 372H210"/><path class="e-current signal" d="M840 210V372H640M490 372H210"/>
-<path class="e-track" d="M130 330V275H795V210"/><path class="e-current signal" d="M130 330V275H795V210"/>
-<text x="300" y="264">HC-05 TX → NANO RX</text><text x="715" y="353">5 V TX</text><text x="280" y="353">3.3 V RX</text>
-<g class="e-component e-bluetooth"><rect x="40" y="330" width="170" height="90" rx="12"/><text class="e-node-title" x="125.0" y="363" text-anchor="middle">HC-05</text><text x="125.0" y="392" text-anchor="middle">WIRELESS LINK</text></g><g class="e-component e-divider"><rect x="490" y="332" width="150" height="80" rx="12"/><text class="e-node-title" x="565.0" y="365" text-anchor="middle">DIVIDER</text><text x="565.0" y="394" text-anchor="middle">3 RESISTORS</text></g>
-<path d="M554 423v9l-5 4 10 7-10 7 5 4v9m-12 0h24m-19 6h14" stroke="#94abff" fill="none" stroke-width="2"/>
-<g class="e-radio"><circle cx="73" cy="443" r="9"/><circle cx="73" cy="443" r="18"/><circle cx="73" cy="443" r="27"/></g><text x="110" y="450">OPERATOR COMMANDS</text>
-<text x="40" y="510">03 / INDEPENDENT MOTOR DRIVE</text>
-<path class="e-track" d="M930 160H953V464H602V515"/><path class="e-current signal" d="M930 160H953V464H602V515"/><text x="690" y="449">DIRECTION + PWM</text>
-<path class="e-track" d="M680 544H740V532H770M680 576H740V610H770"/><path class="e-current" d="M680 544H740V532H770M680 576H740V610H770"/>
-<g class="e-component e-driver"><rect x="520" y="515" width="160" height="90" rx="12"/><text class="e-node-title" x="600.0" y="548" text-anchor="middle">L298N</text><text x="600.0" y="577" text-anchor="middle">DUAL H-BRIDGE</text></g>
-<g class="e-motor e-downstream"><circle cx="809" cy="532" r="33" fill="#102b40" stroke="#3fe3f2" stroke-width="2"/><g class="e-rotor"><path d="M809 508v48m-24-24h48m-41-17 34 34m-34 0 34-34" stroke="#baf7ff" stroke-width="4"/></g><circle cx="809" cy="532" r="8" fill="#3fe3f2"/></g>
-<g class="e-motor e-downstream"><circle cx="809" cy="610" r="33" fill="#102b40" stroke="#3fe3f2" stroke-width="2"/><g class="e-rotor"><path d="M809 586v48m-24-24h48m-41-17 34 34m-34 0 34-34" stroke="#baf7ff" stroke-width="4"/></g><circle cx="809" cy="610" r="8" fill="#3fe3f2"/></g>
-<text x="855" y="537">MOTOR A</text><text x="855" y="615">MOTOR B</text><text x="40" y="645">CYAN: POWER</text><text x="222" y="645">VIOLET: CONTROL</text>
-</svg><div class="e-controls"><button type="button" id="ePause" aria-pressed="false">Pause flow</button><button type="button" id="eTrip" aria-pressed="false">Demo fuse trip</button><button type="button" id="eReverse" aria-pressed="false">Reverse motors</button><span class="e-status" id="eStatus" role="status">Protected power · motors forward</span></div><p class="e-note">Conceptual flow, not wiring · motor motion and fault state are illustrative · supply/ground connections are simplified.</p></div>
-<div class="e-inspector" data-r="right" style="--d:3"><p class="e-inspector-label">SELECT A COMPONENT</p><div class="e-selections"><button class="e-select" type="button" data-part="battery" aria-pressed="false"><small>01 / ENERGY</small><b>18650 Li-ion · ~7.4 V</b></button><button class="e-select" type="button" data-part="fuse" aria-pressed="false"><small>02 / SAFETY</small><b>5 A ceramic fuse</b></button><button class="e-select" type="button" data-part="buck" aria-pressed="true"><small>03 / REGULATION</small><b>LM2596 buck converter</b></button><button class="e-select" type="button" data-part="nano" aria-pressed="false"><small>04 / CONTROL</small><b>Arduino Nano</b></button><button class="e-select" type="button" data-part="divider" aria-pressed="false"><small>05 / LEVEL MATCHING</small><b>3-resistor divider</b></button><button class="e-select" type="button" data-part="driver" aria-pressed="false"><small>06 / ACTUATION</small><b>L298N motor driver</b></button><button class="e-select" type="button" data-part="bluetooth" aria-pressed="false"><small>07 / WIRELESS</small><b>HC-05 Bluetooth</b></button></div><article class="e-inspect-detail" id="eDetail" aria-live="polite"><p class="mech-kicker">03 / REGULATION</p><h3>LM2596 buck converter</h3><ul><li>Steps the nominal ~7.4 V pack down to a regulated 5 V logic supply.</li><li>150 kHz switching regulator with current limiting and thermal shutdown.</li></ul></article></div></div></div>
+<section class="stage wiring" id="electronics" data-name="Electronics · Wiring &amp; protection" aria-labelledby="electronicsH">
+ <div class="wrap">
+  <header class="wire-head"><div><p class="mech-kicker" data-r>ELECTRONICS DEPARTMENT / GROUP 4</p><h2 class="h-stage" id="electronicsH">Wiring &amp; signal protection</h2></div><button class="wire-expand" id="wireExpand" type="button" aria-haspopup="dialog">⤢ Expand diagram</button></header>
+  <figure class="wire-figure" data-r="zoom" style="--d:2"><button class="wire-image-button" id="wireImageOpen" type="button" aria-label="Enlarge the complete wiring diagram" aria-haspopup="dialog"><img src="%%wiring-reference%%" alt="Provided complete wire connections and signal-level protection diagram: 18650 battery pack, ceramic fuse, master toggle switch, L298N driver, two TT motors, MP1584EN buck converter, Arduino Nano, two SG90 servos, HC-05 Bluetooth and a three-resistor divider, with a common ground and wire-gauge legend." width="1280" height="714"></button></figure>
+ </div>
 </section>
+<dialog class="wire-dialog" id="wireDialog" aria-label="Enlarged complete wiring diagram">
+ <div class="wire-toolbar"><strong>COMPLETE WIRING DIAGRAM</strong><button type="button" id="wireZoomOut" aria-label="Zoom out">−</button><output id="wireZoomValue" aria-live="polite">100%</output><button type="button" id="wireZoomIn" aria-label="Zoom in">+</button><button type="button" id="wireZoomReset">Fit</button><button type="button" id="wireClose" autofocus aria-label="Close enlarged wiring diagram">Close ×</button></div>
+ <div class="wire-view" id="wireView"><img id="wireZoomImage" alt="Enlarged view of the supplied complete wiring and signal protection diagram" width="1280" height="714"></div>
+</dialog>
 
 <!-- 7 SAFETY -->
 <section class="stage circ power" id="power" data-name="Safety systems" aria-labelledby="powH">
@@ -1041,7 +969,7 @@ const NODES={
  ctrl:{x:1050,y:70,name:'Controller',role:'Operator input',pts:['Held by the team’s one robot operator','Talks to the robot over Bluetooth'],rule:'One operator controls the robot (Handbook 4.3.1)',modes:['signal']},
  hc:{x:1050,y:240,name:'HC-05',role:'Bluetooth module',pts:['Wireless interface','Remote control link'],rule:'Bluetooth is an allowed link (Handbook 4.3.2)',modes:['power','signal']},
  nano:{x:800,y:240,name:'Arduino Nano',role:'System controller',img:'nano',pts:['System controller','Command processing','Actuation output'],modes:['power','signal']},
- buck:{x:555,y:240,name:'LM2596',role:'Buck converter',pts:['Voltage step-down','High efficiency','Logic protection'],modes:['power']},
+ buck:{x:555,y:240,name:'MP1584EN',role:'Buck converter',pts:['Voltage step-down','High efficiency','Logic protection'],modes:['power']},
  fuse:{x:330,y:400,name:'5A ceramic fuse',role:'Overcurrent protection',pts:['Overcurrent protection','Thermal fail-safe','Hardware defence'],modes:['power']},
  batt:{x:108,y:400,name:'18650 Li-ion pack (~7.4 V)',role:'Battery',img:'battery',pts:['High discharge rate','Stable motor response under load'],rule:'Below the 9 V nominal limit (Handbook 4.3.2)',modes:['power']},
  l298:{x:800,y:500,name:'L298N',role:'Motor driver',pts:['Dual H-bridge architecture','Direction and speed control'],modes:['power','signal']},
@@ -1335,31 +1263,24 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnim
 motionPref.addEventListener('change',()=>{if(motionPref.matches){pickupSet(false,pickupTarget);cancelAnimationFrame(pickupFrame);pickupFrame=0;}});
 pickupDraw();
 
-/* Unified electronics: shared power, serial and motor-control demonstration. */
-const eParts={"battery": {"tag": "01 / ENERGY", "title": "18650 Li-ion · ~7.4 V", "points": ["High energy density stores more energy for the available weight.", "Discharge capability supports motor demand; performance depends on the cells and load."]}, "fuse": {"tag": "02 / SAFETY", "title": "5 A ceramic fuse", "points": ["Overcurrent protection provides a hardware defence.", "Opens the supply path under excessive current; the trip button is a visual demonstration."]}, "buck": {"tag": "03 / REGULATION", "title": "LM2596 buck converter", "points": ["Steps the nominal ~7.4 V pack down to a regulated 5 V logic supply.", "150 kHz switching regulator with current limiting and thermal shutdown."]}, "nano": {"tag": "04 / CONTROL", "title": "Arduino Nano", "points": ["Processes Bluetooth commands.", "Sends direction and PWM control signals to the motor driver."]}, "divider": {"tag": "05 / LEVEL MATCHING", "title": "3-resistor divider", "points": ["Reduces Nano’s 5 V TX signal to the HC-05 RX pin’s 3.3 V logic level.", "The HC-05 return signal is shown separately from the protected TX path."]}, "driver": {"tag": "06 / ACTUATION", "title": "L298N motor driver", "points": ["Dual H-bridge architecture drives two DC motors independently.", "Uses logic inputs and PWM to control motor direction and speed."]}, "bluetooth": {"tag": "07 / WIRELESS", "title": "HC-05 Bluetooth", "points": ["Wireless interface and remote-control link.", "Receives operator commands and exchanges serial data with the Nano."]}};
-const electronicsStage=document.getElementById('electronics');
-const ePause=document.getElementById('ePause'),eTrip=document.getElementById('eTrip'),eStatus=document.getElementById('eStatus'),eReverse=document.getElementById('eReverse');
-function eUpdateStatus(){
- const tripped=electronicsStage.classList.contains('e-trip'),paused=electronicsStage.classList.contains('e-paused'),reverse=electronicsStage.classList.contains('e-reverse');
- eStatus.textContent=tripped?'Fuse open · motors isolated':paused?'Flow and motors paused':reverse?'Protected power · motors reverse':'Protected power · motors forward';
-}
-electronicsStage.querySelectorAll('[data-part]').forEach(button=>button.addEventListener('click',()=>{
- const key=button.dataset.part,part=eParts[key];electronicsStage.dataset.focus=key;
- electronicsStage.querySelectorAll('[data-part]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
- const detail=document.getElementById('eDetail');detail.classList.remove('changed');detail.replaceChildren();
- const tag=document.createElement('p');tag.className='mech-kicker';tag.textContent=part.tag;
- const title=document.createElement('h3');title.textContent=part.title;const list=document.createElement('ul');
- part.points.forEach(point=>{const li=document.createElement('li');li.textContent=point;list.appendChild(li);});detail.append(tag,title,list);
- requestAnimationFrame(()=>detail.classList.add('changed'));
-}));
-ePause.addEventListener('click',()=>{const paused=electronicsStage.classList.toggle('e-paused');ePause.setAttribute('aria-pressed',String(paused));ePause.textContent=paused?'Resume flow':'Pause flow';eUpdateStatus();});
-eTrip.addEventListener('click',()=>{const tripped=electronicsStage.classList.toggle('e-trip');eTrip.setAttribute('aria-pressed',String(tripped));eTrip.textContent=tripped?'Reset demo':'Demo fuse trip';eUpdateStatus();});
-eReverse.addEventListener('click',()=>{const reverse=electronicsStage.classList.toggle('e-reverse');eReverse.setAttribute('aria-pressed',String(reverse));eReverse.textContent=reverse?'Forward motors':'Reverse motors';eUpdateStatus();});
+/* Wiring reference: accessible full-screen inspection with zoom. */
+const wireDialog=document.getElementById('wireDialog'),wireView=document.getElementById('wireView');
+const wireZoomIn=document.getElementById('wireZoomIn'),wireZoomOut=document.getElementById('wireZoomOut');
+let wireZoom=100;
+function setWireZoom(value){wireZoom=Math.max(100,Math.min(250,value));wireView.style.setProperty('--wire-zoom',wireZoom+'%');document.getElementById('wireZoomValue').textContent=wireZoom+'%';wireZoomOut.disabled=wireZoom===100;wireZoomIn.disabled=wireZoom===250;}
+function openWire(){document.getElementById('wireZoomImage').src=document.querySelector('#wireImageOpen img').src;setWireZoom(100);wireView.scrollTop=0;wireView.scrollLeft=0;wireDialog.showModal();}
+document.getElementById('wireExpand').addEventListener('click',openWire);
+document.getElementById('wireImageOpen').addEventListener('click',openWire);
+document.getElementById('wireClose').addEventListener('click',()=>wireDialog.close());
+wireZoomIn.addEventListener('click',()=>setWireZoom(wireZoom+25));wireZoomOut.addEventListener('click',()=>setWireZoom(wireZoom-25));
+document.getElementById('wireZoomReset').addEventListener('click',()=>{setWireZoom(100);wireView.scrollTop=0;wireView.scrollLeft=0;});
+document.addEventListener('keydown',event=>{if(wireDialog.open&&['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '].includes(event.key))event.stopPropagation();},true);
+setWireZoom(100);
 
 /* ================= BOOT ================= */
 let booting=!RM;
 const boot=document.getElementById('boot');
-const LOG=[['> REC TEAM 2026/27  RECRUITMENT 2',''],['> GROUP 4  PICK & PLACE',''],['  battery    18650 Li-ion ~7.4V','OK'],['  fuse       5A ceramic','OK'],['  regulator  LM2596','OK'],['  driver     L298N','READY'],['  link       HC-05 Bluetooth','PAIRED'],['  envelope   200 x 200 x 200 mm','PASS'],['> launching','']];
+const LOG=[['> REC TEAM 2026/27  RECRUITMENT 2',''],['> GROUP 4  PICK & PLACE',''],['  battery    18650 Li-ion ~7.4V','OK'],['  fuse       5A ceramic','OK'],['  regulator  MP1584EN','OK'],['  driver     L298N','READY'],['  link       HC-05 Bluetooth','PAIRED'],['  envelope   200 x 200 x 200 mm','PASS'],['> launching','']];
 function startHero(){
   heroField.classList.add('on');
   document.getElementById('heroSvg').classList.add('drawn');
