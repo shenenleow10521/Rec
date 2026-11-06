@@ -471,9 +471,30 @@ body{font-size:20px}
   .botbtn{transform:none}
 }
 /* ---------- mechanical department ---------- */
-.stage.mechanical{padding:72px 56px 86px;justify-content:center}
-.mechanical-slide{display:block;width:auto;height:auto;max-width:100%;max-height:calc(100svh - 158px);object-fit:contain;border:1px solid var(--line);border-radius:12px}
-@media(max-width:700px){.stage.mechanical{padding:76px 16px 84px}.mechanical-slide{max-height:calc(100svh - 160px)}}
+.mechanical .wrap{max-width:1320px}
+.mech-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px}
+.mech-kicker{font:12px var(--mono);letter-spacing:.14em;color:var(--cyan);margin-bottom:12px}
+.mech-heading .h-stage{font-size:clamp(36px,4.4vw,66px)}
+.mech-heading>p{font-size:17px;line-height:1.5;color:var(--mute);max-width:26ch}
+.mech-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.mech-card{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:linear-gradient(135deg,rgba(20,49,69,.85),rgba(9,24,40,.93));transition:border-color .3s,box-shadow .3s}
+.mech-card:hover,.mech-card:focus-within{border-color:var(--cyan);box-shadow:0 0 35px rgba(63,227,242,.1)}
+.mech-visual{height:clamp(140px,19vh,200px);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid var(--line);background-image:linear-gradient(rgba(63,227,242,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(63,227,242,.06) 1px,transparent 1px);background-size:24px 24px}
+.mech-visual img{position:relative;height:85%;max-width:66%;object-fit:contain;border-radius:8px;box-shadow:0 15px 35px #06101a;transition:transform .6s cubic-bezier(.2,.8,.2,1);z-index:1}
+.mech-card:hover img{transform:translateY(-4px) scale(1.04)}
+.mech-index{position:absolute;left:20px;top:16px;font:12px var(--mono);color:var(--cyan)}
+.mech-spec{position:absolute;right:16px;bottom:16px;font:11px var(--mono);letter-spacing:.08em;background:#0b1c2d;padding:8px 10px;border:1px solid var(--line);border-radius:6px;z-index:2;color:var(--ice)}
+.mech-scan{position:absolute;inset:0;background:linear-gradient(transparent,rgba(63,227,242,.09),transparent);height:45%;opacity:0;pointer-events:none}
+.mechanical.in .mech-scan{animation:mechScan 2.2s ease-out .4s both}
+@keyframes mechScan{0%{opacity:0;transform:translateY(-110%)}30%{opacity:1}100%{opacity:0;transform:translateY(240%)}}
+.mech-copy{padding:20px 24px 24px}
+.mech-copy h3{font-family:var(--display);font-size:clamp(23px,2vw,29px);line-height:1.15;color:var(--ice);margin-bottom:16px}
+.mech-points{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.mech-points li{padding-left:16px;border-left:2px solid rgba(63,227,242,.4);font-size:15px;line-height:1.45;color:var(--mute);transition:border-color .2s,color .2s}
+.mech-points li:hover{border-color:var(--cyan);color:var(--ice)}
+.mech-points b{color:var(--ice);font-weight:600}
+@media(max-width:900px){.mech-grid{grid-template-columns:1fr}.mech-heading{align-items:flex-start;flex-direction:column}.mech-heading>p{max-width:none}.mech-visual{height:200px}.mech-points li{font-size:16px}}
+@media(prefers-reduced-motion:reduce){.mechanical.in .mech-scan{animation:none}.mech-card,.mech-visual img{transition:none}.mech-card:hover img{transform:none}}
 </style>
 </head>
 <body>
@@ -585,8 +606,36 @@ body{font-size:20px}
 </section>
 
 <!-- 4 MECHANICAL -->
-<section class="stage mechanical" id="mechanical" data-name="Mechanical department" aria-label="Mechanical department: Body and chassis">
-  <img class="mechanical-slide" src="%%mechanical-slide%%" width="1201" height="666" alt="Mechanical department — Body and Chassis. 3D printed body: 15% infill for high rigidity with minimal weight; filleted motor towers prevent snapping under torque; open-top switch bracket for easy replacement; integrated fixed jaw printed with the chassis. Two-layer frame: elevated donut board with metal standoffs to save space and isolate bottom soldering; top Bluetooth module for unobstructed signal transmission; rear low battery for a low centre of gravity and rear-wheel traction. Includes the robot photograph and chassis CAD drawing.">
+<section class="stage mechanical" id="mechanical" data-name="Mechanical department" aria-labelledby="mechH">
+  <div class="wrap">
+    <header class="mech-heading">
+      <div><p class="mech-kicker" data-r>MECHANICAL DEPARTMENT / GROUP 4</p><h2 class="h-stage" id="mechH">Body &amp; chassis</h2></div>
+      <p data-r style="--d:1">A printed body.<br>A carefully layered build.</p>
+    </header>
+    <div class="mech-grid">
+      <article class="mech-card" data-r style="--d:2">
+        <div class="mech-visual"><span class="mech-index">01 / STRUCTURE</span><img src="%%chassis%%" width="235" height="183" alt="CAD drawing of the printed chassis, motor towers and fixed jaw"><span class="mech-spec">15% INFILL</span><span class="mech-scan" aria-hidden="true"></span></div>
+        <div class="mech-copy"><h3>3D printed body</h3>
+          <ul class="mech-points">
+            <li><b>15% infill</b> — high rigidity with minimal weight.</li>
+            <li><b>Filleted motor towers</b> help prevent snapping under torque.</li>
+            <li><b>Open-top switch bracket</b> makes switch replacement easy.</li>
+            <li><b>Integrated fixed jaw</b> is printed with the chassis as one piece.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="mech-card" data-r="right" style="--d:3">
+        <div class="mech-visual"><span class="mech-index">02 / ASSEMBLY</span><img src="%%assembled%%" width="238" height="180" alt="Assembled robot with a blue chassis, upper electronics board and yellow rear wheels"><span class="mech-spec">TWO-LAYER FRAME</span><span class="mech-scan" aria-hidden="true"></span></div>
+        <div class="mech-copy"><h3>Two-layer frame</h3>
+          <ul class="mech-points">
+            <li><b>Elevated donut board</b> — metal standoffs save space and separate underside soldering from the electronics below.</li>
+            <li><b>Top-mounted Bluetooth module</b> keeps signal transmission unobstructed.</li>
+            <li><b>Low rear battery</b> lowers the centre of gravity for maximum rear-wheel traction.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
 </section>
 
 <!-- 5 SAFETY -->
