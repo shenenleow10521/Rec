@@ -1,0 +1,18 @@
+{
+  "name": "rec-pick-and-place-showcase",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build:showroom": "esbuild src/showroom/showroom.js --bundle --minify --format=esm --target=es2020 --legal-comments=external --outfile=assets/showroom.js",
+    "check:model": "node scripts/check-model.mjs",
+    "render:model": "node scripts/export-model.mjs && blender -b -t 8 --python scripts/render-studio.py",
+    "build": "npm run build:showroom && python3 build.py"
+  },
+  "dependencies": {
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.11"
+  }
+}

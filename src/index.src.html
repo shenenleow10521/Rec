@@ -714,6 +714,41 @@ body{font-size:20px}
 .dw-guide-body,.dw-dialog .dw-guide-body{font:14px Arial,sans-serif!important;fill:#c4d8e1!important}
 .dw-guide-small,.dw-dialog .dw-guide-small{font:11.5px Arial,sans-serif!important;fill:#7f9eae!important}
 .dw-guide-footer,.dw-dialog .dw-guide-footer{font:10.5px Arial,sans-serif!important;letter-spacing:.02em;fill:#688b9e!important}
+
+/* ---------- robot: interactive motor-show presentation ---------- */
+.stage.showroom{padding:70px 48px 82px 36px;background:radial-gradient(ellipse at 64% 57%,#102f4580,transparent 57%),#06111de8}
+.showroom .wrap{max-width:1800px;position:relative;height:calc(100svh - 152px);min-height:610px}
+.rs-viewport{position:absolute;inset:-28px -18px 58px 22%;overflow:hidden;isolation:isolate;mask-image:radial-gradient(ellipse at 53% 55%,#000 42%,#000e 68%,transparent 91%)}
+.rs-viewport canvas{display:block;width:100%;height:100%;position:absolute;inset:0;z-index:2;touch-action:pan-y;cursor:grab;outline:none}
+.rs-viewport canvas:active{cursor:grabbing}.rs-viewport canvas:focus-visible{outline:1px solid var(--cyan);outline-offset:-18px}
+.rs-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:1;transition:opacity .65s;pointer-events:none}
+.rs-ready .rs-fallback{opacity:0;visibility:hidden}.rs-static .rs-fallback{opacity:1;visibility:visible}
+.rs-copy{position:absolute;z-index:4;left:0;top:10%;width:clamp(270px,26vw,390px);pointer-events:none}
+.rs-eyebrow{font:11px var(--mono);letter-spacing:.17em;color:#67d5df;margin-bottom:24px}
+.rs-title{font-family:var(--display);font-weight:800;font-size:clamp(52px,5.3vw,88px);line-height:.96;letter-spacing:-.035em;color:#e7f4f9;text-transform:uppercase}
+.rs-title span{display:block}.rs-title span:last-child{color:#48d7e5;text-shadow:0 0 36px #48d7e51c}
+.rs-summary{font:16px/1.75 Arial,sans-serif;max-width:28ch;color:#8eafc2;margin:25px 0 24px}
+.rs-focus{display:flex;gap:8px;flex-wrap:wrap;pointer-events:auto;max-width:320px}
+.rs-focus button{font:11px var(--mono);color:#9cbdcd;border:1px solid #73cbd42b;background:#0b21318c;border-radius:5px;padding:9px 11px;cursor:pointer;transition:.25s}
+.rs-focus button:hover,.rs-focus button[aria-pressed=true]{border-color:#51d1db;color:#cef5f8;background:#123849}
+.rs-meta{display:flex;gap:32px;margin-top:34px;padding-top:20px;border-top:1px solid #b6e8f01c;width:max-content}
+.rs-meta b{display:block;font:500 28px Arial,sans-serif;color:#d6e9f0;margin-bottom:6px}.rs-meta span{font:9px var(--mono);letter-spacing:.1em;color:#6f94aa}
+.rs-topline{position:absolute;top:4px;left:0;right:0;display:flex;justify-content:space-between;align-items:center;gap:16px;z-index:4;font:10px var(--mono);letter-spacing:.1em;color:#638ea6}
+.rs-topline strong{color:#b2d1dd;font-weight:400}.rs-topline .rs-number{color:#55d4df;margin-right:10px}
+.rs-hero-label{position:absolute;right:24px;top:18%;z-index:3;font:10px var(--mono);letter-spacing:.12em;color:#6ba0b8;writing-mode:vertical-rl;pointer-events:none}
+.rs-console{position:absolute;bottom:6px;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:15px 18px;border:1px solid #69cbd32b;border-radius:12px;background:linear-gradient(110deg,#102939d9,#0a1b2bc9);backdrop-filter:blur(16px)}
+.rs-camera,.rs-actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.rs-console button{font:11px var(--mono);padding:10px 13px;border-radius:6px;background:transparent;border:1px solid transparent;cursor:pointer;color:#88aebe;transition:background .25s,border-color .25s,color .25s}
+.rs-console button:hover,.rs-console button[aria-pressed=true]{border-color:#50cdd558;background:#1d556126;color:#c1f4f3}
+.rs-console .rs-divider{width:1px;height:20px;background:#78b4c22a;margin:0 6px}
+.rs-status{font:10px var(--mono);letter-spacing:.02em;color:#648fa7;max-width:30ch;line-height:1.5;text-align:center}
+.rs-console button:disabled,.rs-focus button:disabled{opacity:.45;cursor:default}
+.rs-static .rs-status{color:#a9c8d6}
+.rs-copy [data-r]{--d:2}.rs-copy .rs-summary{--d:3}.rs-copy .rs-focus{--d:4}.rs-copy .rs-meta{--d:5}
+@media(min-width:1001px) and (max-height:780px){.stage.showroom{padding:60px 44px 76px 32px}.showroom .wrap{height:calc(100svh - 136px);min-height:500px}.rs-copy{top:10%}.rs-title{font-size:clamp(46px,4.4vw,68px)}.rs-eyebrow{margin-bottom:17px}.rs-summary{font-size:14px;line-height:1.65;margin:18px 0}.rs-meta{margin-top:22px;padding-top:16px}.rs-viewport{inset:-25px -16px 55px 21%}.rs-console{padding:11px 14px}.rs-console button{font-size:10px;padding:9px 10px}}
+@media(max-width:1000px){.stage.showroom{padding:78px 24px 92px}.showroom .wrap{height:auto;min-height:900px}.rs-topline{position:relative;gap:20px;align-items:flex-start;line-height:1.6}.rs-topline strong{max-width:25ch;text-align:right}.rs-copy{position:relative;top:auto;width:100%;margin-top:35px}.rs-title{font-size:clamp(42px,8vw,72px)}.rs-title span{display:inline}.rs-title span:first-child::after{content:' '}.rs-summary{max-width:45ch;margin:20px 0}.rs-meta{display:none}.rs-viewport{inset:230px -24px 110px -24px;min-height:470px}.rs-console{bottom:0;flex-wrap:wrap;padding:12px}.rs-status{order:3;max-width:none;width:100%;text-align:left}.rs-hero-label{display:none}.rs-focus{max-width:none}.rs-camera,.rs-actions{gap:3px}.rs-console button{font-size:10px;padding:9px}.rs-viewport canvas{touch-action:pan-y}}
+@media(max-width:550px){.showroom .wrap{min-height:880px}.rs-title{font-size:42px}.rs-eyebrow{font-size:9px;margin-bottom:17px}.rs-summary{font-size:14px;max-width:36ch}.rs-viewport{inset:285px -24px 130px -24px;min-height:390px}.rs-console{gap:8px}.rs-topline{font-size:8px}.rs-topline strong{max-width:20ch}.rs-focus button{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.rs-fallback,.rs-console button,.rs-focus button{transition:none}}
 </style>
 </head>
 <body>
@@ -733,7 +768,7 @@ body{font-size:20px}
 <div class="brand" aria-hidden="true"><b>GROUP 4</b><span>REC Team 2026/27 Recruitment 2</span></div>
 <nav class="rail" aria-label="Slides"></nav>
 <div class="dock">
-  <div class="count" aria-live="polite"><strong id="cNow">01</strong> / <span id="cAll">07</span> <span id="cName" style="margin-left:10px"></span></div>
+  <div class="count" aria-live="polite"><strong id="cNow">01</strong> / <span id="cAll">08</span> <span id="cName" style="margin-left:10px"></span></div>
   <div class="dock-actions">
     <button class="chip-btn" id="fsBtn" type="button" aria-label="Full screen (F)"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 5V1h4M9 1h4v4M13 9v4H9M5 13H1V9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><kbd>F</kbd></button>
     <button class="chip-btn" id="prevBtn" type="button" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2L4 7l5 5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
@@ -760,7 +795,7 @@ body{font-size:20px}
       </div>
       <p class="lede" data-r style="--d:7">A robot no bigger than <strong>20 cm</strong> on any side, <strong>three minutes</strong> on a 2.1 m field, and <strong>50 points</strong> on the table. Here is how we built for it.</p>
       <div class="cta-row" data-r style="--d:8">
-        <button class="cta" type="button" data-go="1">Meet the team</button>
+        <button class="cta" type="button" data-go="1">Explore the robot</button>
         <span class="hint">Press <kbd>→</kbd> or <kbd>Space</kbd> to move through the slides</span>
       </div>
     </div>
@@ -771,7 +806,28 @@ body{font-size:20px}
   </div>
 </section>
 
-<!-- 2 TEAM -->
+<!-- 2 ROBOT SHOWROOM -->
+<section class="stage showroom" id="showroom" data-name="Robot showroom" aria-labelledby="rsTitle">
+ <div class="wrap">
+  <div class="rs-topline"><span><span class="rs-number">G4 / 01</span>THE ENGINEERING EDITION</span><strong>PHOTO-DERIVED 3D RECONSTRUCTION</strong></div>
+  <div class="rs-copy">
+   <p class="rs-eyebrow" data-r>DESIGNED. PRINTED. ASSEMBLED.</p>
+   <h2 class="rs-title" id="rsTitle" data-r><span>Meet the</span><span>machine.</span></h2>
+   <p class="rs-summary" data-r>Two padded claws. A blue printed chassis. One robot, built by Group 4.</p>
+   <div class="rs-focus" data-r aria-label="Inspect robot systems"><button type="button" data-rs-focus="gripper" aria-pressed="false" disabled>Grippers ↗</button><button type="button" data-rs-focus="drive" aria-pressed="false" disabled>Drive ↗</button><button type="button" data-rs-focus="electronics" aria-pressed="false" disabled>Electronics ↗</button></div>
+   <div class="rs-meta" data-r><div><b>02</b><span>PADDED CLAWS</span></div><div><b>02</b><span>DRIVE WHEELS</span></div></div>
+  </div>
+  <div class="rs-viewport" aria-label="Robot 3D viewing area"><img class="rs-fallback" src="assets/robot-preview.webp" width="1200" height="920" alt="Reconstructed blue robot on a dark display plinth, with two geared claws, yellow wheels and raised electronics."></div>
+  <p class="rs-hero-label">BLUE CHASSIS / YELLOW DRIVE / TWIN CLAWS</p>
+  <div class="rs-console" aria-label="3D model controls">
+   <div class="rs-camera" aria-label="Camera angles"><button type="button" data-rs-view="hero" aria-pressed="true" disabled>Hero</button><button type="button" data-rs-view="front" aria-pressed="false" disabled>Front</button><button type="button" data-rs-view="top" aria-pressed="false" disabled>Top</button></div>
+   <p class="rs-status" role="status">Preparing the 3D display…</p>
+   <div class="rs-actions"><button type="button" id="rsOrbit" aria-pressed="true" disabled>Auto orbit</button><span class="rs-divider" aria-hidden="true"></span><button type="button" id="rsExplode" aria-pressed="false" disabled>Explode</button><button type="button" id="rsGrip" aria-pressed="false" disabled>Grip demo</button></div>
+  </div>
+ </div>
+</section>
+
+<!-- 3 TEAM -->
 <section class="stage team" id="team" data-name="Team" aria-labelledby="teamH">
   <div class="wrap">
     <div class="team-head">
@@ -803,7 +859,7 @@ body{font-size:20px}
   </div>
 </section>
 
-<!-- 3 MISSION -->
+<!-- 4 MISSION -->
 <section class="stage mission" id="mission" data-name="The mission" aria-labelledby="missionH">
   <div class="wrap">
     <div class="field-box" data-r="zoom" style="--d:0"><svg id="missionSvg" role="img" aria-label="Top-down game field, 2.1 by 2.1 metres, with our robot running the scoring route"></svg></div>
@@ -824,7 +880,7 @@ body{font-size:20px}
   </div>
 </section>
 
-<!-- 4 MECHANICAL -->
+<!-- 5 MECHANICAL -->
 <section class="stage mechanical" id="mechanical" data-name="Mechanical department" aria-labelledby="mechH">
   <div class="wrap">
     <header class="mech-heading">
@@ -857,7 +913,7 @@ body{font-size:20px}
   </div>
 </section>
 
-<!-- 5 PICK-UP MECHANISM -->
+<!-- 6 PICK-UP MECHANISM -->
 <section class="stage pickup" id="pickup" data-name="Pick-up mechanism" aria-labelledby="pickupH">
  <div class="wrap">
   <header class="pickup-head"><div><p class="mech-kicker" data-r>MECHANICAL DEPARTMENT / GROUP 4</p><h2 class="h-stage" id="pickupH">Pick-up mechanism</h2></div><p data-r style="--d:1">Servo rotation.<br>Linear gripping motion.</p></header>
@@ -893,7 +949,7 @@ body{font-size:20px}
  </div>
 </section>
 
-<!-- 6 ELECTRONICS -->
+<!-- 7 ELECTRONICS -->
 <section class="stage electronics detailed-wiring" id="electronics" data-name="Electronics · Complete wiring" data-focus="nano" aria-labelledby="electronicsH"><div class="wrap"><header class="e-head"><div><p class="mech-kicker" data-r>ELECTRONICS DEPARTMENT / GROUP 4</p><h2 class="h-stage" id="electronicsH">Complete wiring &amp; protection</h2></div><p data-r style="--d:1">Every component.<br>Every connection in motion.</p></header><div class="dw-workbench" data-r style="--d:2"><div class="dw-toolbar"><div class="dw-legend"><span class="dw-key power">POWER</span><span class="dw-key five">5 V RAIL</span><span class="dw-key control">CONTROL</span><span class="dw-key serial">SERIAL</span><span class="dw-key ground">GND</span></div><div class="e-controls"><button type="button" id="dwInspectOpen" aria-haspopup="dialog">Inspect ↗</button><button type="button" id="ePause" aria-pressed="false">Pause</button><button type="button" id="eMaster" aria-pressed="false">Power off</button><button type="button" id="eTrip" aria-pressed="false">Fuse trip</button><button type="button" id="eReverse" aria-pressed="false">Reverse motors</button></div></div><svg class="dw-svg" id="dwSvg" viewBox="0 0 1750 775" role="group" aria-label="Hand-built detailed electronics illustration with individual power, motor, control, servo and serial wires. Pin routing is illustrative; confirm actual assignments in firmware."><defs>
 <linearGradient id="dwPcb" x2="1" y2="1"><stop stop-color="#1c5b62"/><stop offset="1" stop-color="#0b2838"/></linearGradient>
 <linearGradient id="dwNano" x2="0" y2="1"><stop stop-color="#226a8f"/><stop offset="1" stop-color="#12364c"/></linearGradient>
@@ -935,7 +991,7 @@ body{font-size:20px}
  <text class="dw-guide-footer" x="1412" y="734">24/26 AWG + Dupont connections</text>
 </g></g></svg><div class="dw-bottom"><article class="dw-readout" id="eDetail" aria-live="polite"><p class="mech-kicker">05 / CONTROL</p><h3>Arduino Nano</h3><ul><li>Processes serial commands and sends motor-control outputs.</li><li>Controls the two SG90 servos for the claw and arm.</li></ul></article><span class="e-status" id="eStatus" role="status">Power on · motors forward</span></div></div><p class="dw-caption">SELECT OR TAB TO A COMPONENT TO TRACE ITS CONNECTIONS · PRESENTATION WIRING: CONFIRM FIRMWARE PIN ASSIGNMENTS · ANIMATED SIGNALS ARE ILLUSTRATIVE</p><dialog class="dw-dialog" id="dwDialog" aria-label="Full-size hand-built wiring diagram"><header><span>COMPLETE WIRING · VECTOR INSPECTION</span><button type="button" id="dwInspectClose" autofocus>Close ×</button></header><div class="dw-dialog-body"><svg viewBox="0 0 1750 775" role="img" aria-label="Full-size vector drawing of the complete wire connections"><use href="#dwArtwork"/></svg></div></dialog></div></section>
 
-<!-- 7 THANKS -->
+<!-- 8 THANKS -->
 <section class="stage thanks" id="thanks" data-name="Thank you" aria-labelledby="thxH">
   <canvas id="rain" aria-hidden="true"></canvas>
   <svg class="traces" style="right:0;top:0;width:340px;height:260px;transform:scaleX(-1)" viewBox="0 0 340 260" aria-hidden="true">
@@ -1434,6 +1490,7 @@ detect();
 if(!booting)startHero();
 })();
 </script>
+<script type="module" src="assets/showroom.js"></script>
 </body>
 </html>
 
