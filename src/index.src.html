@@ -471,30 +471,49 @@ body{font-size:20px}
   .botbtn{transform:none}
 }
 /* ---------- mechanical department ---------- */
-.mechanical .wrap{max-width:1320px}
-.mech-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:28px}
-.mech-kicker{font:12px var(--mono);letter-spacing:.14em;color:var(--cyan);margin-bottom:12px}
-.mech-heading .h-stage{font-size:clamp(36px,4.4vw,66px)}
-.mech-heading>p{font-size:17px;line-height:1.5;color:var(--mute);max-width:26ch}
-.mech-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.mech-card{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:linear-gradient(135deg,rgba(20,49,69,.85),rgba(9,24,40,.93));transition:border-color .3s,box-shadow .3s}
-.mech-card:hover,.mech-card:focus-within{border-color:var(--cyan);box-shadow:0 0 35px rgba(63,227,242,.1)}
-.mech-visual{height:clamp(140px,19vh,200px);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid var(--line);background-image:linear-gradient(rgba(63,227,242,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(63,227,242,.06) 1px,transparent 1px);background-size:24px 24px}
-.mech-visual img{position:relative;height:85%;max-width:66%;object-fit:contain;border-radius:8px;box-shadow:0 15px 35px #06101a;transition:transform .6s cubic-bezier(.2,.8,.2,1);z-index:1}
-.mech-card:hover img{transform:translateY(-4px) scale(1.04)}
-.mech-index{position:absolute;left:20px;top:16px;font:12px var(--mono);color:var(--cyan)}
-.mech-spec{position:absolute;right:16px;bottom:16px;font:11px var(--mono);letter-spacing:.08em;background:#0b1c2d;padding:8px 10px;border:1px solid var(--line);border-radius:6px;z-index:2;color:var(--ice)}
-.mech-scan{position:absolute;inset:0;background:linear-gradient(transparent,rgba(63,227,242,.09),transparent);height:45%;opacity:0;pointer-events:none}
-.mechanical.in .mech-scan{animation:mechScan 2.2s ease-out .4s both}
-@keyframes mechScan{0%{opacity:0;transform:translateY(-110%)}30%{opacity:1}100%{opacity:0;transform:translateY(240%)}}
-.mech-copy{padding:20px 24px 24px}
-.mech-copy h3{font-family:var(--display);font-size:clamp(23px,2vw,29px);line-height:1.15;color:var(--ice);margin-bottom:16px}
-.mech-points{list-style:none;margin:0;padding:0;display:grid;gap:12px}
-.mech-points li{padding-left:16px;border-left:2px solid rgba(63,227,242,.4);font-size:15px;line-height:1.45;color:var(--mute);transition:border-color .2s,color .2s}
-.mech-points li:hover{border-color:var(--cyan);color:var(--ice)}
+.stage.mechanical{padding:76px 64px 88px 40px}
+.mechanical .wrap{max-width:1760px;min-height:calc(100svh - 164px);display:flex;flex-direction:column;justify-content:center}
+.mech-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:24px}
+.mech-kicker{font:12px var(--mono);letter-spacing:.16em;color:var(--cyan);margin-bottom:12px}
+.mech-heading .h-stage{font-size:clamp(44px,5vw,86px)}
+.mech-tools{display:flex;align-items:center;gap:24px}
+.mech-tools p{font-size:17px;line-height:1.5;color:var(--mute)}
+.mech-replay{font:12px var(--mono);color:var(--cyan);border:1px solid var(--line);background:#0d2235;border-radius:50%;width:46px;height:46px;cursor:pointer;transition:border-color .25s,box-shadow .25s}
+.mech-replay:hover{border-color:var(--cyan);box-shadow:0 0 24px #3fe3f233}
+.mech-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;perspective:1800px}
+.mech-card{--rx:0deg;--ry:0deg;--mx:50%;--my:50%;position:relative;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:linear-gradient(135deg,rgba(20,49,69,.85),rgba(9,24,40,.96));transition:border-color .3s,box-shadow .3s}
+.mech-card::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(500px circle at var(--mx) var(--my),#3fe3f210,transparent 70%);z-index:4}
+.mech-card:hover{border-color:#3fe3f299;box-shadow:0 18px 60px #0005,0 0 32px #3fe3f215}
+.mech-visual{height:clamp(200px,29svh,340px);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid var(--line);perspective:800px;background:radial-gradient(ellipse at center,#16445c88,transparent 65%),linear-gradient(#3fe3f20a 1px,transparent 1px),linear-gradient(90deg,#3fe3f20a 1px,transparent 1px);background-size:auto,28px 28px,28px 28px}
+.mech-visual::before{content:'';position:absolute;width:260px;height:260px;border:1px dashed #3fe3f240;border-radius:50%;box-shadow:0 0 0 30px #3fe3f206,0 0 0 60px #3fe3f204;transform:rotateX(55deg);animation:mechOrbit 22s linear infinite;animation-play-state:paused}
+.mechanical.in .mech-visual::before{animation-play-state:running}
+.mech-object{height:84%;max-width:75%;position:relative;z-index:2;transform:rotateX(var(--rx)) rotateY(var(--ry));transition:transform .3s ease-out}
+.mech-object img{display:block;height:100%;width:auto;max-width:100%;object-fit:contain;border-radius:10px;box-shadow:0 22px 40px #06101a88}
+.mechanical.in .mech-object{animation:mechDeploy 1.3s cubic-bezier(.16,1,.3,1) .3s backwards}
+.mechanical.in .mech-card:nth-child(2) .mech-object{animation-delay:.55s}
+.mechanical.in .mech-object img{animation:mechFloat 6s ease-in-out 1.7s infinite}
+.mech-index{position:absolute;left:22px;top:18px;font:12px var(--mono);color:var(--cyan);z-index:3}
+.mech-index::before{content:'';display:inline-block;width:5px;height:5px;background:var(--cyan);box-shadow:0 0 10px var(--cyan);margin-right:8px;border-radius:50%}
+.mech-spec{position:absolute;right:18px;bottom:18px;font:12px var(--mono);letter-spacing:.08em;background:#0b1c2dee;padding:10px 12px;border:1px solid #3fe3f245;border-radius:6px;z-index:3;color:var(--ice)}
+.mech-scan{position:absolute;left:0;right:0;top:-35%;height:35%;background:linear-gradient(transparent,#3fe3f228);border-bottom:1px solid #3fe3f2aa;box-shadow:0 4px 18px #3fe3f240;opacity:0;pointer-events:none;z-index:3}
+.mechanical.in .mech-scan{animation:mechScan 3.8s ease-in-out .5s infinite}
+.mechanical.in .mech-card:nth-child(2) .mech-scan{animation-delay:1.2s}
+.mech-copy{padding:24px 28px 28px}
+.mech-copy h3{font-family:var(--display);font-size:clamp(27px,2.1vw,36px);line-height:1.15;color:var(--ice);margin-bottom:20px}
+.mech-points{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.mech-points li{padding-left:16px;border-left:2px solid #3fe3f250;font-size:clamp(17px,1.15vw,21px);line-height:1.5;color:var(--mute);transition:border-color .2s,color .2s,background .2s}
+.mech-points li:hover{border-color:var(--cyan);color:var(--ice);background:#3fe3f206}
 .mech-points b{color:var(--ice);font-weight:600}
-@media(max-width:900px){.mech-grid{grid-template-columns:1fr}.mech-heading{align-items:flex-start;flex-direction:column}.mech-heading>p{max-width:none}.mech-visual{height:200px}.mech-points li{font-size:16px}}
-@media(prefers-reduced-motion:reduce){.mechanical.in .mech-scan{animation:none}.mech-card,.mech-visual img{transition:none}.mech-card:hover img{transform:none}}
+.mechanical.in .mech-points li{animation:mechLine .7s ease-out backwards;animation-delay:calc(.7s + var(--i,0)*.12s)}
+.mech-points li:nth-child(2){--i:1}.mech-points li:nth-child(3){--i:2}.mech-points li:nth-child(4){--i:3}
+@keyframes mechDeploy{from{opacity:0;transform:translateY(65px) rotateX(30deg) rotateY(-18deg) scale(.75);filter:blur(12px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@keyframes mechFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes mechScan{0%{top:-35%;opacity:0}12%{opacity:1}60%{top:105%;opacity:0}100%{top:105%;opacity:0}}
+@keyframes mechOrbit{from{transform:rotateX(55deg) rotate(0)}to{transform:rotateX(55deg) rotate(360deg)}}
+@keyframes mechLine{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:none}}
+@media(min-width:901px) and (max-height:780px){.stage.mechanical{padding:64px 60px 76px 36px}.mechanical .wrap{min-height:calc(100svh - 140px)}.mech-heading{margin-bottom:18px}.mech-heading .h-stage{font-size:clamp(40px,4vw,64px)}.mech-visual{height:clamp(150px,25svh,200px)}.mech-copy{padding:20px 22px}.mech-copy h3{font-size:27px;margin-bottom:14px}.mech-points{gap:11px}.mech-points li{font-size:16px;line-height:1.45}}
+@media(max-width:900px){.stage.mechanical{padding:80px 24px 90px}.mechanical .wrap{min-height:0}.mech-grid{grid-template-columns:1fr}.mech-heading{align-items:flex-start;flex-direction:column}.mech-tools{width:100%;justify-content:space-between}.mech-visual{height:240px}.mech-points li{font-size:17px}}
+@media(prefers-reduced-motion:reduce){.mechanical.in .mech-object,.mechanical.in .mech-object img,.mechanical.in .mech-scan,.mech-visual::before,.mechanical.in .mech-points li{animation:none}.mech-scan{display:none}.mech-card,.mech-object{transition:none}.mech-object{transform:none}}
 </style>
 </head>
 <body>
@@ -610,11 +629,11 @@ body{font-size:20px}
   <div class="wrap">
     <header class="mech-heading">
       <div><p class="mech-kicker" data-r>MECHANICAL DEPARTMENT / GROUP 4</p><h2 class="h-stage" id="mechH">Body &amp; chassis</h2></div>
-      <p data-r style="--d:1">A printed body.<br>A carefully layered build.</p>
+      <div class="mech-tools" data-r style="--d:1"><p>A printed body.<br>A carefully layered build.</p><button class="mech-replay" type="button" aria-label="Replay mechanical build animation" title="Replay build">↻</button></div>
     </header>
     <div class="mech-grid">
       <article class="mech-card" data-r style="--d:2">
-        <div class="mech-visual"><span class="mech-index">01 / STRUCTURE</span><img src="%%chassis%%" width="235" height="183" alt="CAD drawing of the printed chassis, motor towers and fixed jaw"><span class="mech-spec">15% INFILL</span><span class="mech-scan" aria-hidden="true"></span></div>
+        <div class="mech-visual"><span class="mech-index">01 / STRUCTURE</span><div class="mech-object"><img src="%%chassis%%" width="235" height="183" alt="CAD drawing of the printed chassis, motor towers and fixed jaw"></div><span class="mech-spec">15% INFILL</span><span class="mech-scan" aria-hidden="true"></span></div>
         <div class="mech-copy"><h3>3D printed body</h3>
           <ul class="mech-points">
             <li><b>15% infill</b> — high rigidity with minimal weight.</li>
@@ -625,7 +644,7 @@ body{font-size:20px}
         </div>
       </article>
       <article class="mech-card" data-r="right" style="--d:3">
-        <div class="mech-visual"><span class="mech-index">02 / ASSEMBLY</span><img src="%%assembled%%" width="238" height="180" alt="Assembled robot with a blue chassis, upper electronics board and yellow rear wheels"><span class="mech-spec">TWO-LAYER FRAME</span><span class="mech-scan" aria-hidden="true"></span></div>
+        <div class="mech-visual"><span class="mech-index">02 / ASSEMBLY</span><div class="mech-object"><img src="%%assembled%%" width="238" height="180" alt="Assembled robot with a blue chassis, upper electronics board and yellow rear wheels"></div><span class="mech-spec">TWO-LAYER FRAME</span><span class="mech-scan" aria-hidden="true"></span></div>
         <div class="mech-copy"><h3>Two-layer frame</h3>
           <ul class="mech-points">
             <li><b>Elevated donut board</b> — metal standoffs save space and separate underside soldering from the electronics below.</li>
@@ -1085,6 +1104,28 @@ const rio=new IntersectionObserver(es=>es.forEach(e=>{
     }
   }else if(e.intersectionRatio===0)s.classList.remove('in');
 }),{threshold:[0,.2]});
+
+/* Mechanical: pointer-driven inspection and replay, without a render loop. */
+const mechStage=document.getElementById('mechanical');
+const motionPref=matchMedia('(prefers-reduced-motion: reduce)');
+mechStage.querySelectorAll('.mech-card').forEach(card=>{
+  let frame=0;
+  card.addEventListener('pointermove',e=>{
+    if(motionPref.matches||e.pointerType==='touch')return;
+    const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+    cancelAnimationFrame(frame);
+    frame=requestAnimationFrame(()=>{
+      card.style.setProperty('--rx',((.5-y)*9)+'deg');card.style.setProperty('--ry',((x-.5)*12)+'deg');
+      card.style.setProperty('--mx',(x*100)+'%');card.style.setProperty('--my',(y*100)+'%');
+    });
+  });
+  card.addEventListener('pointerleave',()=>{cancelAnimationFrame(frame);['--rx','--ry','--mx','--my'].forEach(k=>card.style.removeProperty(k));});
+});
+mechStage.querySelector('.mech-replay').addEventListener('click',()=>{
+  if(motionPref.matches)return;
+  mechStage.classList.remove('in');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>mechStage.classList.add('in')));
+});
 
 /* ================= BOOT ================= */
 let booting=!RM;
