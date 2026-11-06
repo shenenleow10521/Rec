@@ -514,6 +514,38 @@ body{font-size:20px}
 @media(min-width:901px) and (max-height:780px){.stage.mechanical{padding:64px 60px 76px 36px}.mechanical .wrap{min-height:calc(100svh - 140px)}.mech-heading{margin-bottom:18px}.mech-heading .h-stage{font-size:clamp(40px,4vw,64px)}.mech-visual{height:clamp(150px,25svh,200px)}.mech-copy{padding:20px 22px}.mech-copy h3{font-size:27px;margin-bottom:14px}.mech-points{gap:11px}.mech-points li{font-size:16px;line-height:1.45}}
 @media(max-width:900px){.stage.mechanical{padding:80px 24px 90px}.mechanical .wrap{min-height:0}.mech-grid{grid-template-columns:1fr}.mech-heading{align-items:flex-start;flex-direction:column}.mech-tools{width:100%;justify-content:space-between}.mech-visual{height:240px}.mech-points li{font-size:17px}}
 @media(prefers-reduced-motion:reduce){.mechanical.in .mech-object,.mechanical.in .mech-object img,.mechanical.in .mech-scan,.mech-visual::before,.mechanical.in .mech-points li{animation:none}.mech-scan{display:none}.mech-card,.mech-object{transition:none}.mech-object{transform:none}}
+
+/* ---------- pick-up mechanism ---------- */
+.stage.pickup{padding:72px 64px 88px 40px}
+.pickup .wrap{max-width:1760px}
+.pickup-head{margin-bottom:26px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.pickup-head .h-stage{font-size:clamp(38px,4.5vw,76px)}
+.pickup-head>p{font:13px var(--mono);color:var(--mute);max-width:24ch;line-height:1.6}
+.pickup-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:stretch}
+.pickup-lab{min-width:0;position:relative;border:1px solid #3fe3f240;border-radius:20px;overflow:hidden;background:radial-gradient(ellipse at 50% 35%,#20536c66,transparent 65%),linear-gradient(#3fe3f208 1px,transparent 1px),linear-gradient(90deg,#3fe3f208 1px,transparent 1px),#0b1e30;background-size:auto,30px 30px,30px 30px,auto}
+.pickup-lab::before{content:'';position:absolute;inset:0;border-radius:20px;pointer-events:none;box-shadow:inset 0 0 60px #3fe3f208}
+.pickup-lab-top{padding:20px 24px;display:flex;justify-content:space-between;font:12px var(--mono);letter-spacing:.08em;color:var(--cyan)}
+.pickup-live::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan);margin-right:8px}
+.pickup-svg{display:block;width:100%;max-height:47svh;min-height:250px;overflow:visible}
+.pickup-svg text{font-family:var(--mono);font-size:14px;fill:var(--mute)}
+.pickup-svg .pinion-art{filter:drop-shadow(0 0 12px #3fe3f266)}
+.pickup-glow{opacity:var(--grip,.2);transition:opacity .15s}
+.pickup-controls{display:flex;gap:10px;align-items:center;padding:16px 24px 20px;flex-wrap:wrap;border-top:1px solid var(--line)}
+.pickup-controls button{cursor:pointer;padding:11px 16px;font:12px var(--mono);border:1px solid var(--line);border-radius:8px;background:#0b1b2c;color:var(--ice);transition:.2s}
+.pickup-controls button:hover,.pickup-controls button[aria-pressed=true]{background:#3fe3f21a;border-color:var(--cyan);box-shadow:0 0 20px #3fe3f214;color:var(--cyan)}
+.pickup-status{font:12px var(--mono);color:var(--cyan);margin-left:auto}
+.pickup-detail{display:grid;gap:16px;grid-template-rows:1fr 1fr 1fr;min-width:0}
+.pickup-feature{display:grid;grid-template-columns:116px 1fr;gap:20px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:18px 22px;background:linear-gradient(115deg,#16384c99,#0b1c2eee);position:relative;overflow:hidden;transition:border-color .3s,transform .3s}
+.pickup-feature:hover{border-color:var(--cyan);transform:translateX(-4px)}
+.pickup-feature img{width:116px;height:90px;object-fit:contain;border-radius:9px;box-shadow:0 12px 22px #0003}
+.pickup-feature h3{font:600 clamp(21px,1.7vw,29px) var(--display);line-height:1.2;margin:5px 0 10px;color:var(--ice)}
+.pickup-feature p{font-size:clamp(16px,1.08vw,19px);line-height:1.5;color:var(--mute)}
+.pickup-feature small{font:11px var(--mono);letter-spacing:.1em;color:var(--cyan)}
+.pickup.in .pickup-feature img{animation:pickupAssemble 1.2s cubic-bezier(.16,1,.3,1) backwards;animation-delay:calc(var(--d,0)*.1s)}
+@keyframes pickupAssemble{from{opacity:0;transform:perspective(500px) rotateY(-50deg) translateY(35px) scale(.8);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+@media(min-width:1001px) and (max-height:780px){.stage.pickup{padding-top:64px;padding-bottom:76px}.pickup-head{margin-bottom:18px}.pickup-head .h-stage{font-size:clamp(36px,4vw,64px)}.pickup-svg{max-height:43svh;min-height:220px}.pickup-lab-top{padding:16px 20px}.pickup-feature{padding:12px 16px;gap:14px;grid-template-columns:90px 1fr}.pickup-feature img{width:90px;height:74px}.pickup-feature h3{font-size:22px;margin:4px 0 7px}.pickup-feature p{font-size:15px}.pickup-detail{gap:12px}}
+@media(max-width:1000px){.stage.pickup{padding:80px 24px 90px}.pickup-layout{grid-template-columns:1fr}.pickup-head{align-items:flex-start;flex-direction:column}.pickup-head>p{max-width:none}.pickup-svg{max-height:none;min-height:0}.pickup-feature{grid-template-columns:100px 1fr;padding:16px}.pickup-feature img{width:100px}.pickup-status{margin-left:0}}
+@media(prefers-reduced-motion:reduce){.pickup.in .pickup-feature img{animation:none}.pickup-feature,.pickup-controls button{transition:none}}
 </style>
 </head>
 <body>
@@ -533,7 +565,7 @@ body{font-size:20px}
 <div class="brand" aria-hidden="true"><b>GROUP 4</b><span>REC Team 2026/27 Recruitment 2</span></div>
 <nav class="rail" aria-label="Slides"></nav>
 <div class="dock">
-  <div class="count" aria-live="polite"><strong id="cNow">01</strong> / <span id="cAll">07</span> <span id="cName" style="margin-left:10px"></span></div>
+  <div class="count" aria-live="polite"><strong id="cNow">01</strong> / <span id="cAll">08</span> <span id="cName" style="margin-left:10px"></span></div>
   <div class="dock-actions">
     <button class="chip-btn" id="fsBtn" type="button" aria-label="Full screen (F)"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 5V1h4M9 1h4v4M13 9v4H9M5 13H1V9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><kbd>F</kbd></button>
     <button class="chip-btn" id="prevBtn" type="button" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2L4 7l5 5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
@@ -657,7 +689,43 @@ body{font-size:20px}
   </div>
 </section>
 
-<!-- 5 SAFETY -->
+<!-- 5 PICK-UP MECHANISM -->
+<section class="stage pickup" id="pickup" data-name="Pick-up mechanism" aria-labelledby="pickupH">
+ <div class="wrap">
+  <header class="pickup-head"><div><p class="mech-kicker" data-r>MECHANICAL DEPARTMENT / GROUP 4</p><h2 class="h-stage" id="pickupH">Pick-up mechanism</h2></div><p data-r style="--d:1">Servo rotation.<br>Linear gripping motion.</p></header>
+  <div class="pickup-layout">
+   <div class="pickup-lab" data-r="zoom" style="--d:2">
+    <div class="pickup-lab-top"><span class="pickup-live">KINEMATIC DEMO</span><span>ROTATION → TRANSLATION</span></div>
+    <svg class="pickup-svg" viewBox="0 0 760 500" role="img" aria-label="Animated schematic: a servo rotates a 16-tooth pinion to slide the rack and close a padded moving jaw against a fixed jaw. Illustrative geometry, not to scale.">
+     <defs><linearGradient id="pickupMetal" x2=".8" y2="1"><stop stop-color="#f4faff"/><stop offset=".5" stop-color="#c0d8e6"/><stop offset="1" stop-color="#6a90a9"/></linearGradient><linearGradient id="pickupCube"><stop stop-color="#3fe3f2"/><stop offset="1" stop-color="#18768e"/></linearGradient></defs>
+     <ellipse cx="400" cy="442" rx="230" ry="20" fill="#020e1c" opacity=".65"/>
+     <circle cx="400" cy="190" r="98" fill="none" stroke="#3fe3f225" stroke-dasharray="3 9"/>
+     <path d="M318 143a94 94 0 0 1 162-12m-1-17 1 17-17-2" stroke="#3fe3f2" fill="none" stroke-width="2"/>
+     <text x="92" y="112">SERVO INPUT</text><path d="M205 108h48l43 53" fill="none" stroke="#3fe3f260"/>
+     <g transform="translate(400 190)"><g id="pickupPinion" class="pinion-art"><path d="M56.89,-11.32 L57.54,-7.27 L71.73,-6.21 L71.73,6.21 L57.54,7.27 L56.89,11.32 L56.89,11.32 L55.94,15.30 L68.65,21.71 L63.89,33.19 L50.38,28.74 L48.23,32.22 L48.23,32.22 L45.83,35.55 L55.11,46.33 L46.33,55.11 L35.55,45.83 L32.22,48.23 L32.22,48.23 L28.74,50.38 L33.19,63.89 L21.71,68.65 L15.30,55.94 L11.32,56.89 L11.32,56.89 L7.27,57.54 L6.21,71.73 L-6.21,71.73 L-7.27,57.54 L-11.32,56.89 L-11.32,56.89 L-15.30,55.94 L-21.71,68.65 L-33.19,63.89 L-28.74,50.38 L-32.22,48.23 L-32.22,48.23 L-35.55,45.83 L-46.33,55.11 L-55.11,46.33 L-45.83,35.55 L-48.23,32.22 L-48.23,32.22 L-50.38,28.74 L-63.89,33.19 L-68.65,21.71 L-55.94,15.30 L-56.89,11.32 L-56.89,11.32 L-57.54,7.27 L-71.73,6.21 L-71.73,-6.21 L-57.54,-7.27 L-56.89,-11.32 L-56.89,-11.32 L-55.94,-15.30 L-68.65,-21.71 L-63.89,-33.19 L-50.38,-28.74 L-48.23,-32.22 L-48.23,-32.22 L-45.83,-35.55 L-55.11,-46.33 L-46.33,-55.11 L-35.55,-45.83 L-32.22,-48.23 L-32.22,-48.23 L-28.74,-50.38 L-33.19,-63.89 L-21.71,-68.65 L-15.30,-55.94 L-11.32,-56.89 L-11.32,-56.89 L-7.27,-57.54 L-6.21,-71.73 L6.21,-71.73 L7.27,-57.54 L11.32,-56.89 L11.32,-56.89 L15.30,-55.94 L21.71,-68.65 L33.19,-63.89 L28.74,-50.38 L32.22,-48.23 L32.22,-48.23 L35.55,-45.83 L46.33,-55.11 L55.11,-46.33 L45.83,-35.55 L48.23,-32.22 L48.23,-32.22 L50.38,-28.74 L63.89,-33.19 L68.65,-21.71 L55.94,-15.30 L56.89,-11.32 Z" fill="url(#pickupMetal)" stroke="#e6faff" stroke-width="2"/><circle r="22" fill="#173d54" stroke="#3fe3f2" stroke-width="2"/><path d="M-12 0h24M0-12v24" stroke="#3fe3f2" stroke-width="2"/></g></g>
+     <circle cx="400" cy="190" r="5" fill="#c5f7ff"/>
+     <g fill="#193c51" stroke="#4d829c" stroke-width="2"><path d="M280 287h32v112h32v18h-64Z"/></g>
+     <g id="pickupRack"><path d="M120 270h540v19H120Z" fill="url(#pickupMetal)" stroke="#daedf9"/><g fill="url(#pickupMetal)" stroke="#daedf9"><path d="M140.00 270v-10l5-12h9l5 12v10"/><path d="M165.13 270v-10l5-12h9l5 12v10"/><path d="M190.27 270v-10l5-12h9l5 12v10"/><path d="M215.40 270v-10l5-12h9l5 12v10"/><path d="M240.53 270v-10l5-12h9l5 12v10"/><path d="M265.66 270v-10l5-12h9l5 12v10"/><path d="M290.80 270v-10l5-12h9l5 12v10"/><path d="M315.93 270v-10l5-12h9l5 12v10"/><path d="M341.06 270v-10l5-12h9l5 12v10"/><path d="M366.19 270v-10l5-12h9l5 12v10"/><path d="M391.33 270v-10l5-12h9l5 12v10"/><path d="M416.46 270v-10l5-12h9l5 12v10"/><path d="M441.59 270v-10l5-12h9l5 12v10"/><path d="M466.73 270v-10l5-12h9l5 12v10"/><path d="M491.86 270v-10l5-12h9l5 12v10"/><path d="M516.99 270v-10l5-12h9l5 12v10"/><path d="M542.12 270v-10l5-12h9l5 12v10"/><path d="M567.26 270v-10l5-12h9l5 12v10"/><path d="M592.39 270v-10l5-12h9l5 12v10"/></g><path d="M512 289h32v128h-32v-18h-16v-20h16Z" fill="url(#pickupMetal)" stroke="#daedf9" stroke-width="2"/><rect x="496" y="340" width="16" height="59" rx="4" fill="#3fe3f2"/></g>
+     <rect x="344" y="340" width="16" height="59" rx="4" fill="#3fe3f2"/>
+     <g class="pickup-glow"><rect x="352" y="332" width="88" height="88" rx="11" fill="none" stroke="#3fe3f2" stroke-width="2"/><rect x="346" y="326" width="100" height="100" rx="14" fill="none" stroke="#3fe3f240"/></g>
+     <rect x="360" y="340" width="72" height="72" rx="5" fill="url(#pickupCube)" stroke="#adf8ff" stroke-width="2"/><path d="M372 352h48v48h-48Z" fill="none" stroke="#baf9ff55"/>
+     <path d="M527 312h95m-8-6 8 6-8 6M535 306l-8 6 8 6" stroke="#3fe3f2" stroke-width="2" fill="none"/>
+     <text x="548" y="337">RACK TRAVEL</text>
+     <path d="M343 367h-99l-24 35" stroke="#3fe3f280" fill="none"/><text x="99" y="426">SOFT PADDING</text>
+     <text x="272" y="463">FIXED JAW</text><text x="478" y="463">MOVING JAW</text>
+    </svg>
+    <div class="pickup-controls"><button type="button" id="pickupAuto" aria-pressed="true">Auto demo</button><button type="button" id="pickupOpen">Open</button><button type="button" id="pickupGrip">Grip</button><span class="pickup-status" id="pickupStatus" role="status">Auto demo</span></div>
+   </div>
+   <div class="pickup-detail">
+    <article class="pickup-feature" data-r="right" style="--d:3"><img src="%%rack-cad%%" alt="CAD view of the rack and pinion assembly" width="196" height="129"><div><small>01 / ACTUATION</small><h3>Rack &amp; pinion</h3><p>Servo-driven rotation becomes linear motion to operate the gripper.</p></div></article>
+    <article class="pickup-feature" data-r="right" style="--d:4"><img src="%%pinion-cad%%" alt="CAD view of the sixteen-tooth pinion" width="160" height="168"><div><small>02 / TRANSMISSION</small><h3>Module 1 · 16 teeth</h3><p>16 mm pitch diameter for a larger range of motion.</p></div></article>
+    <article class="pickup-feature" data-r="right" style="--d:5"><img src="%%gripper%%" alt="Photograph of the robot gripper" width="147" height="110"><div><small>03 / CONTACT</small><h3>Soft-padded grip</h3><p>Better grip, with extra tolerance for mechanical error.</p></div></article>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- 6 SAFETY -->
 <section class="stage circ power" id="power" data-name="Safety systems" aria-labelledby="powH">
   <div class="wrap">
     <div class="circ-top">
@@ -668,7 +736,7 @@ body{font-size:20px}
   </div>
 </section>
 
-<!-- 6 LOGIC -->
+<!-- 7 LOGIC -->
 <section class="stage circ logic" id="logic" data-name="Logic routing" aria-labelledby="logH">
   <div class="wrap">
     <div class="circ-top">
@@ -679,7 +747,7 @@ body{font-size:20px}
   </div>
 </section>
 
-<!-- 7 THANKS -->
+<!-- 8 THANKS -->
 <section class="stage thanks" id="thanks" data-name="Thank you" aria-labelledby="thxH">
   <canvas id="rain" aria-hidden="true"></canvas>
   <svg class="traces" style="right:0;top:0;width:340px;height:260px;transform:scaleX(-1)" viewBox="0 0 340 260" aria-hidden="true">
@@ -1126,6 +1194,37 @@ mechStage.querySelector('.mech-replay').addEventListener('click',()=>{
   mechStage.classList.remove('in');
   requestAnimationFrame(()=>requestAnimationFrame(()=>mechStage.classList.add('in')));
 });
+
+/* Pick-up simulator: rack travel = pitch radius × pinion rotation. */
+const pickupStage=document.getElementById('pickup');
+const pickupAuto=document.getElementById('pickupAuto'),pickupStatus=document.getElementById('pickupStatus');
+let pickupFrame=0,pickupVisible=false,pickupAutomatic=!RM,pickupValue=0,pickupTarget=0,pickupTime=0,pickupLast=0;
+function pickupDraw(){
+ document.getElementById('pickupPinion').setAttribute('transform',`rotate(${pickupValue*180/Math.PI})`);
+ document.getElementById('pickupRack').setAttribute('transform',`translate(${-64*pickupValue} 0)`);
+ pickupStage.style.setProperty('--grip',String(.1+pickupValue*.9));
+}
+function pickupTick(t){
+ pickupFrame=0;
+ if(!pickupVisible||document.hidden)return;
+ const dt=pickupLast?Math.min((t-pickupLast)/1000,.05):0;pickupLast=t;
+ if(pickupAutomatic){pickupTime+=dt;pickupTarget=(1-Math.cos(pickupTime*Math.PI/2.8))/2;}
+ pickupValue=motionPref.matches?pickupTarget:pickupValue+(pickupTarget-pickupValue)*(1-Math.exp(-dt*10));pickupDraw();
+ if(!motionPref.matches&&(pickupAutomatic||Math.abs(pickupTarget-pickupValue)>.001))pickupFrame=requestAnimationFrame(pickupTick);
+}
+function pickupStart(){if(pickupVisible&&!document.hidden&&!pickupFrame){pickupLast=0;pickupFrame=requestAnimationFrame(pickupTick);}}
+function pickupSet(auto,target){pickupAutomatic=auto&&!motionPref.matches;if(target!==undefined)pickupTarget=target;
+ pickupAuto.setAttribute('aria-pressed',String(pickupAutomatic));pickupStatus.textContent=pickupAutomatic?'Auto demo':pickupTarget?'Gripping':'Open';
+ if(motionPref.matches){pickupValue=pickupTarget;pickupDraw();}else pickupStart();
+}
+pickupAuto.setAttribute('aria-pressed',String(pickupAutomatic));pickupStatus.textContent=RM?'Manual control':'Auto demo';
+pickupAuto.addEventListener('click',()=>pickupSet(!pickupAutomatic));
+document.getElementById('pickupOpen').addEventListener('click',()=>pickupSet(false,0));
+document.getElementById('pickupGrip').addEventListener('click',()=>pickupSet(false,1));
+new IntersectionObserver(entries=>{pickupVisible=entries[0].isIntersecting;if(pickupVisible)pickupStart();else{cancelAnimationFrame(pickupFrame);pickupFrame=0;pickupLast=0;}},{threshold:.15}).observe(pickupStage);
+document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(pickupFrame);pickupFrame=0;}else pickupStart();});
+motionPref.addEventListener('change',()=>{if(motionPref.matches){pickupSet(false,pickupTarget);cancelAnimationFrame(pickupFrame);pickupFrame=0;}});
+pickupDraw();
 
 /* ================= BOOT ================= */
 let booting=!RM;
