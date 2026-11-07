@@ -12,8 +12,8 @@ assert(model.racks.every(r=>Math.abs(r.position.x+.15)<1e-9));assert(model.gears
 model.update(0,0);model.parts.forEach((p,i)=>assert(p.position.distanceTo(home[i])<1e-9));
 const bounds=new T.Box3().setFromObject(model.root),size=bounds.getSize(new T.Vector3());assert(size.x>2.5&&size.x<3.6);assert(size.y>1.8&&size.y<3);assert(bounds.min.y>-.1);
 const html=fs.readFileSync('index.html','utf8');const stages=[...html.matchAll(/<section class="stage[^\"]*" id="([^\"]+)"/g)].map(m=>m[1]);
-assert.deepEqual(stages,['hero','showroom','team','mission','mechanical','pickup','electronics','programming','contributions','thanks']);
-assert(html.includes('id="cAll">10'));assert(html.includes('src="assets/showroom.js"'));assert(html.includes('src="assets/robot-preview.webp"'));
+assert.deepEqual(stages,['hero','showroom','team','mission','mechanical','pickup','electronics','programming','contributions','electrical-contributions','thanks']);
+assert(html.includes('id="cAll">11'));assert(html.includes('src="assets/showroom.js"'));assert(html.includes('src="assets/robot-preview.webp"'));
 const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(ids.length,new Set(ids).size);
 for(const f of ['assets/showroom.js','assets/robot-preview.webp','assets/THREE-LICENSE.txt'])assert(fs.statSync(f).size>0);
 console.log(JSON.stringify({result:'PASS',meshes,instancedObjects:instances,baseTriangles:triangles,approximateBounds:[size.x,size.y,size.z].map(n=>+n.toFixed(3)),stages:stages.length,verified:['finite geometry','mirrored claws','gear/rack linkage','exploded assembly and reset','second-slide insertion','all required local assets']}));
