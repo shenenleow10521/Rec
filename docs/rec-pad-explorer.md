@@ -13,3 +13,7 @@ Repeated controls use a 120 ms ticker. Drive release sends S; claw releases send
 The companion sketch's 600 ms actuator command timeout and UART_BAUD=9600 are firmware properties, not measurements of installed firmware or app-configured Bluetooth baud. The website does not present a simulated TX frame as a hardware acknowledgement.
 
 The modal uses native dialog focus handling and Escape dismissal, tabs with arrow-key navigation, and stops slide navigation while open. Reduced-motion settings disable packet animation.
+
+## Motion upgrade
+
+The controller diagram now has continuous decorative scan, packet and focus animations while open. A separate hologram illustrates semantic direction, independent claw states and a bounded PWM example; it never represents measured hardware state. Preview PWM starts at 200 and is clamped to 80–255. Motion pauses while closed or the document is hidden, and reduced-motion settings disable effects.

@@ -8,7 +8,8 @@
     "check:model": "node scripts/check-model.mjs",
     "render:model": "node scripts/export-model.mjs && blender -b -t 8 --python scripts/render-studio.py",
     "build": "npm run build:showroom && python3 build.py",
-    "check:rec-pad": "node --test scripts/check-rec-pad.mjs"
+    "check:rec-pad": "node --test scripts/check-rec-pad.mjs",
+    "check:nano": "node --test scripts/check-nano-firmware.mjs"
   },
   "dependencies": {
     "three": "0.180.0"

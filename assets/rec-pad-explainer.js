@@ -31,12 +31,22 @@ export function describeControl(key,mapping=DEFAULT_MAPPING){
   timing:c.release?'Repeat while held · 120 ms':c.group==='STOP'?'Stop frame repeats while paused · ~240 ms':'One command per tap + status request',
   releaseText:c.release?'Release → '+c.release:c.group==='STOP'?'Resume → unlock; no automatic movement':'Companion PWM: 80–255 · step 20'};
 }
+export function updatePreview(previous,key){
+ if(!CONTROLS[key])throw new Error('Unknown REC PAD control');
+ const next={...previous,action:key};
+ if(key==='faster')next.pwm=Math.min(255,next.pwm+20);
+ if(key==='slower')next.pwm=Math.max(80,next.pwm-20);
+ if(key==='leftOpen')next.leftClosed=false;if(key==='leftClose')next.leftClosed=true;
+ if(key==='rightOpen')next.rightClosed=false;if(key==='rightClose')next.rightClosed=true;
+ return next;
+}
 export function initRecPadExplorer(root=document){
  const dialog=root.getElementById('rpDialog');if(!dialog)return null;
  const motion=matchMedia('(prefers-reduced-motion: reduce)');
  const get=id=>root.getElementById(id),all=selector=>[...dialog.querySelectorAll(selector)];
  const actions=all('[data-rp-action]'),tabs=all('[data-rp-tab]'),panels=all('[data-rp-panel]');
  let selected='forward',opener=null,playTimer=null;
+ let preview={action:'forward',pwm:200,leftClosed:false,rightClosed:false};
  const mapping=()=>({drive:get('rpReverseDrive').checked,left:get('rpReverseLeft').checked,right:get('rpReverseRight').checked});
  function stopAnimation(){clearTimeout(playTimer);playTimer=null;dialog.classList.remove('rp-playing');}
  function render(){
@@ -44,6 +54,13 @@ export function initRecPadExplorer(root=document){
   actions.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.rpAction===selected)));
   get('rpControlTitle').textContent=c.title;get('rpControlGroup').textContent=c.group;
   dialog.dataset.rpGroup=c.group;
+  dialog.dataset.rpAction=selected;
+  dialog.dataset.rpLeft=preview.leftClosed?'closed':'open';dialog.dataset.rpRight=preview.rightClosed?'closed':'open';
+  dialog.style.setProperty('--rp-tread-time',(1.1-preview.pwm/340).toFixed(2)+'s');
+  get('rpPreviewAction').textContent=c.title;
+  get('rpPreviewPwm').textContent=preview.pwm+' / 255';
+  get('rpPreviewClaws').textContent='L '+(preview.leftClosed?'CLOSED':'OPEN')+' · R '+(preview.rightClosed?'CLOSED':'OPEN');
+  get('rpTrailByte').textContent=c.group==='STOP'?'S · ! · P':c.wire;
   get('rpDescription').textContent=c.description;get('rpSemantic').textContent=c.group==='STOP'?'PAUSE':c.command;
   get('rpWire').textContent=c.group==='STOP'?'S / ! / P':c.wire;
   get('rpFrame').textContent=c.displayFrame;get('rpHex').textContent=c.hex;
@@ -60,14 +77,14 @@ export function initRecPadExplorer(root=document){
   stopAnimation();if(motion.matches)return;
   void dialog.offsetWidth;dialog.classList.add('rp-playing');playTimer=setTimeout(stopAnimation,2100);
  }
- function open(button){opener=button;selectTab('map');render();dialog.showModal();get('rpClose').focus();}
+ function open(button){opener=button;selectTab('map');render();dialog.showModal();dialog.classList.remove('rp-suspended');get('rpClose').focus();play();}
  root.querySelectorAll('[data-rp-open]').forEach(button=>button.addEventListener('click',()=>open(button)));
  get('rpClose').addEventListener('click',()=>dialog.close());
  dialog.addEventListener('close',()=>{stopAnimation();if(opener)opener.focus();});
  dialog.addEventListener('click',e=>{if(e.target!==dialog)return;const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();});
  // Keep presentation navigation and the fullscreen shortcut out of this modal.
  dialog.addEventListener('keydown',e=>e.stopPropagation());
- actions.forEach(button=>button.addEventListener('click',()=>{selected=button.dataset.rpAction;render();play();}));
+ actions.forEach(button=>button.addEventListener('click',()=>{selected=button.dataset.rpAction;preview=updatePreview(preview,selected);render();play();}));
  ['rpReverseDrive','rpReverseLeft','rpReverseRight'].forEach(id=>get(id).addEventListener('change',render));
  get('rpResetMapping').addEventListener('click',()=>{get('rpReverseDrive').checked=true;get('rpReverseLeft').checked=true;get('rpReverseRight').checked=false;render();});
  tabs.forEach((t,index)=>{t.addEventListener('click',()=>selectTab(t.dataset.rpTab));t.addEventListener('keydown',e=>{
@@ -76,7 +93,7 @@ export function initRecPadExplorer(root=document){
  });});
  all('[data-rp-replay]').forEach(b=>b.addEventListener('click',play));
  motion.addEventListener('change',()=>{if(motion.matches)stopAnimation();});
- root.addEventListener('visibilitychange',()=>{if(root.hidden)stopAnimation();});
+ root.addEventListener('visibilitychange',()=>{dialog.classList.toggle('rp-suspended',root.hidden);if(root.hidden)stopAnimation();});
  render();return {open,selectTab,render,stopAnimation};
 }
 if(typeof document!=='undefined')initRecPadExplorer(document);

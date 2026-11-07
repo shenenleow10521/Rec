@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {CONTROLS,DEFAULT_MAPPING,STOP_FRAME,mapCommand,describeControl,initRecPadExplorer} from '../assets/rec-pad-explainer.js';
+import {CONTROLS,DEFAULT_MAPPING,STOP_FRAME,mapCommand,describeControl,updatePreview,initRecPadExplorer} from '../assets/rec-pad-explainer.js';
 
 test('calibration matches REC PAD source, including fixed turn swap',()=>{
  assert.deepEqual(Object.fromEntries('FBLRWXEC'.split('').map(c=>[c,mapCommand(c)])),{F:'B',B:'F',L:'R',R:'L',W:'X',X:'W',E:'E',C:'C'});
@@ -25,7 +25,7 @@ test('every control exposes the correct packet, release and repeat semantics',()
 function fixture(){
  const root={hidden:false,activeElement:null};
  class Element{
-  constructor(id,data={}){this.id=id;this.dataset=data;this.attributes={};this.listeners={};this.textContent='';this.hidden=false;this.checked=false;this.open=false;this.offsetWidth=100;this.classes=new Set();this.classList={add:c=>this.classes.add(c),remove:c=>this.classes.delete(c),contains:c=>this.classes.has(c)};}
+  constructor(id,data={}){this.id=id;this.dataset=data;this.attributes={};this.listeners={};this.textContent='';this.hidden=false;this.checked=false;this.open=false;this.offsetWidth=100;this.style={setProperty:(k,v)=>{this[k]=v;}};this.classes=new Set();this.classList={add:c=>this.classes.add(c),remove:c=>this.classes.delete(c),contains:c=>this.classes.has(c),toggle:(c,on)=>on?this.classes.add(c):this.classes.delete(c)};}
   addEventListener(type,fn){(this.listeners[type]??=[]).push(fn);}
   emit(type,props={}){const event={target:this,preventDefault(){this.prevented=true;},stopPropagation(){this.stopped=true;},...props};for(const fn of this.listeners[type]??[])fn(event);return event;}
   setAttribute(k,v){this.attributes[k]=v;}
@@ -34,7 +34,7 @@ function fixture(){
   close(){this.open=false;this.emit('close');}
   getBoundingClientRect(){return {left:10,right:500,top:10,bottom:500};}
  }
- const ids=['rpDialog','rpClose','rpReverseDrive','rpReverseLeft','rpReverseRight','rpResetMapping','rpControlTitle','rpControlGroup','rpDescription','rpSemantic','rpWire','rpFrame','rpHex','rpTiming','rpRelease','rpMapNote','rpPathCommand'];
+ const ids=['rpDialog','rpClose','rpReverseDrive','rpReverseLeft','rpReverseRight','rpResetMapping','rpControlTitle','rpControlGroup','rpDescription','rpSemantic','rpWire','rpFrame','rpHex','rpTiming','rpRelease','rpMapNote','rpPathCommand','rpPreviewAction','rpPreviewPwm','rpPreviewClaws','rpTrailByte'];
  const elements=Object.fromEntries(ids.map(id=>[id,new Element(id)]));
  elements.rpReverseDrive.checked=elements.rpReverseLeft.checked=true;
  const actions=Object.keys(CONTROLS).map(key=>new Element(key,{rpAction:key}));
@@ -75,4 +75,14 @@ test('HTML includes linked accessible views, both entry points and unique IDs',(
  assert(s.includes('src="assets/rec-pad-explainer.js"'));assert(s.includes('aria-describedby="rpSubtitle"'));
  for(const name of ['Map','Path','Protocol']){assert(s.includes(`id="rpTab${name}"`));assert(s.includes(`aria-labelledby="rpTab${name}"`));}
  assert(!fs.readFileSync('assets/rec-pad-explainer.js','utf8').includes('navigator.bluetooth'));
+});
+
+test('robot preview keeps independent claw states and bounds illustrative PWM',()=>{
+ let s={action:'forward',pwm:200,leftClosed:false,rightClosed:false};
+ s=updatePreview(s,'leftClose');s=updatePreview(s,'rightOpen');assert(s.leftClosed);assert(!s.rightClosed);
+ s=updatePreview(s,'rightClose');s=updatePreview(s,'leftOpen');assert(!s.leftClosed);assert(s.rightClosed);
+ for(let i=0;i<20;i++)s=updatePreview(s,'faster');assert.equal(s.pwm,255);
+ for(let i=0;i<20;i++)s=updatePreview(s,'slower');assert.equal(s.pwm,80);
+ const paused=updatePreview(s,'pause');assert.equal(paused.action,'pause');assert.equal(paused.pwm,80);assert(paused.rightClosed);
+ assert.throws(()=>updatePreview(s,'invalid'),/Unknown/);
 });
