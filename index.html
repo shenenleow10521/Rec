@@ -834,6 +834,55 @@ body{font-size:20px}
 @media(prefers-reduced-motion:reduce){.pg-phone-shell,.pg-caret,.pg-mini-slide,.pg-running .pg-link::after{animation:none!important}.pg-phone-shell{transform:scale(var(--phone-scale))}.pg-card,.pg-code-row,.pg-button,.pg-remote-unit,.pg-mini-dots i{transition:none}}
 /* Department headings stay prominent across all four department slides. */
 .stage .department-label{font-size:clamp(18px,1.55vw,26px);font-weight:600;line-height:1.35;letter-spacing:.1em}
+
+/* ---------- individual contribution: mechanical authorship ---------- */
+.stage.contributions{padding:78px 64px 88px 40px;background:radial-gradient(ellipse at 20% 55%,#12536b2a,transparent 55%),radial-gradient(ellipse at 90% 50%,#4156ac18,transparent 45%)}
+.contributions .wrap{max-width:1700px}
+.ic-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:26px}
+.ic-eyebrow{font:11px var(--mono);letter-spacing:.2em;color:#85b1c3;margin-bottom:14px}
+.ic-heading .h-stage{font-size:clamp(36px,4.4vw,76px);line-height:1.06}
+.ic-heading aside{font:10px/1.6 var(--mono);color:#6999ae;flex-shrink:0;text-align:right}
+.ic-heading aside b{display:block;font:500 38px/1 var(--display);color:#d8f4f1;margin-bottom:7px}
+.ic-department{display:flex;align-items:center;gap:15px;margin-bottom:22px;font:600 clamp(17px,1.55vw,25px)/1.3 var(--mono);letter-spacing:.05em;color:#8de8e7}
+.ic-department::before{content:'';width:32px;height:2px;background:var(--cyan);box-shadow:0 0 14px #3fe3f277}
+.ic-department small{margin-left:auto;font:10px var(--mono);letter-spacing:.12em;color:#638b9e}
+.ic-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;perspective:1400px}
+.ic-person{--ic-accent:#65e1df;--ic-delay:0s;position:relative;min-width:0;border:1px solid #6ac1ce38;border-radius:4px 28px 4px 4px;background:linear-gradient(130deg,#1235478c,#0a1d2dce);overflow:hidden;transition:transform .45s,border-color .45s,box-shadow .45s;isolation:isolate}
+.ic-person:nth-child(2){--ic-accent:#a7b9ff;--ic-delay:.3s;background:linear-gradient(130deg,#1c2e4a99,#0a1d2dce)}
+.ic-person::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 25%,#89e8ed08 48%,transparent 68%);transform:translateX(-100%);animation:icSweep 7s ease-in-out infinite;animation-play-state:paused}
+.ic-person:hover,.ic-person:focus-within{transform:translateY(-6px);border-color:var(--ic-accent);box-shadow:0 24px 70px #0004}
+.ic-person-top{padding:22px 26px 0;display:flex;align-items:center;justify-content:space-between;font:10px var(--mono);letter-spacing:.14em;color:#7799ac}
+.ic-person-top span:first-child{color:var(--ic-accent)}
+.ic-portrait{height:clamp(170px,24svh,255px);position:relative;display:flex;align-items:center;padding:20px 28px}
+.ic-identity{z-index:2;position:relative;pointer-events:none}
+.ic-identity .ic-surname{font:11px var(--mono);letter-spacing:.25em;color:#739aad;margin-bottom:7px}
+.ic-identity h3{font:800 clamp(40px,4.2vw,72px)/.95 var(--display);letter-spacing:-.03em;color:#e4f4f7;text-shadow:0 6px 26px #071828;max-width:5ch}
+.ic-identity h3 span{display:block}
+.ic-role{font:10px var(--mono);letter-spacing:.13em;color:var(--ic-accent);margin-top:14px}
+.ic-blueprint{position:absolute;right:-12px;top:1%;height:100%;width:65%;overflow:visible;opacity:.65;mask-image:linear-gradient(90deg,transparent,#000 24%)}
+.ic-drawing{transform-origin:200px 135px;animation:icFloat 6s ease-in-out infinite;animation-delay:var(--ic-delay);animation-play-state:paused}
+.ic-gear{transform-box:fill-box;transform-origin:center;animation:icGear 18s linear infinite;animation-play-state:paused}
+.ic-rack{animation:icRack 4s ease-in-out infinite;animation-play-state:paused}
+.ic-signal{stroke-dasharray:4 110;animation:icSignal 3s linear infinite;animation-play-state:paused}
+.contributions.in .ic-person::before,.contributions.in :is(.ic-drawing,.ic-gear,.ic-rack,.ic-signal){animation-play-state:running}
+.ic-tasks{list-style:none;padding:0 26px;margin:0;border-top:1px solid #7fb9cd22}
+.ic-tasks li{display:flex;align-items:center;gap:14px;min-height:58px;padding:13px 0;font:500 clamp(14px,1.25vw,20px)/1.4 var(--display);color:#d0e3ee}
+.ic-tasks li+li{border-top:1px solid #8ab7c016}
+.ic-tasks span{font:10px var(--mono);color:var(--ic-accent)}
+.ic-person-bottom{position:relative;height:4px;background:#6fb6c91a;margin-top:5px;overflow:hidden}
+.ic-person-bottom::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,var(--ic-accent),transparent);transform:translateX(-105%);animation:icSweep 4s ease-in-out infinite;animation-delay:var(--ic-delay);animation-play-state:paused}
+.contributions.in .ic-person-bottom::after{animation-play-state:running}
+.ic-footer{display:flex;justify-content:space-between;gap:18px;padding-top:20px;margin-top:22px;border-top:1px solid #7bb7c426;font:10px/1.5 var(--mono);letter-spacing:.09em;color:#688d9f}
+.ic-footer strong{font-weight:400;color:#a3c7d5}
+@keyframes icSweep{0%,15%{transform:translateX(-105%)}75%,100%{transform:translateX(105%)}}
+@keyframes icFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-9px) rotate(1deg)}}
+@keyframes icGear{to{transform:rotate(360deg)}}
+@keyframes icRack{0%,100%{transform:translateX(-8px)}50%{transform:translateX(14px)}}
+@keyframes icSignal{to{stroke-dashoffset:-228}}
+@media(min-width:1001px) and (max-height:780px){.stage.contributions{padding:64px 56px 80px 36px}.ic-heading{margin-bottom:20px}.ic-heading .h-stage{font-size:clamp(36px,4vw,60px)}.ic-department{margin-bottom:18px}.ic-portrait{height:175px}.ic-tasks li{min-height:53px}.ic-footer{margin-top:18px;padding-top:16px}}
+@media(max-width:1000px){.stage.contributions{padding:82px 24px 96px}.ic-heading aside{display:none}.ic-heading .h-stage{max-width:15ch}.ic-grid{grid-template-columns:1fr;max-width:700px;margin:auto}.ic-portrait{height:205px}.ic-identity h3{font-size:58px}.ic-heading{margin-bottom:24px}.ic-department small{display:none}.ic-footer{flex-wrap:wrap}.contributions [data-r]{opacity:1;transform:none;filter:none}}
+@media(max-width:550px){.ic-heading .h-stage{font-size:36px}.ic-department{font-size:16px;gap:10px}.ic-department::before{width:18px}.ic-portrait{padding:20px;height:185px}.ic-identity h3{font-size:48px}.ic-person-top{padding:20px 20px 0;font-size:8px}.ic-tasks{padding:0 20px}.ic-tasks li{font-size:15px}.ic-blueprint{right:-30px;width:75%;opacity:.5}.ic-footer{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.ic-person::before,.ic-person-bottom::after,.ic-drawing,.ic-gear,.ic-rack,.ic-signal{animation:none!important}.ic-person{transition:none}.ic-person:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -853,7 +902,7 @@ body{font-size:20px}
 <div class="brand" aria-hidden="true"><b>GROUP 4</b><span>REC Team 2026/27 Recruitment 2</span></div>
 <nav class="rail" aria-label="Slides"></nav>
 <div class="dock">
-  <div class="count" aria-live="polite"><strong id="cNow">01</strong> / <span id="cAll">09</span> <span id="cName" style="margin-left:10px"></span></div>
+  <div class="count" aria-live="polite"><strong id="cNow">01</strong> / <span id="cAll">10</span> <span id="cName" style="margin-left:10px"></span></div>
   <div class="dock-actions">
     <button class="chip-btn" id="fsBtn" type="button" aria-label="Full screen (F)"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M1 5V1h4M9 1h4v4M13 9v4H9M5 13H1V9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><kbd>F</kbd></button>
     <button class="chip-btn" id="prevBtn" type="button" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2L4 7l5 5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button>
@@ -1108,7 +1157,32 @@ body{font-size:20px}
  </div>
 </section>
 
-<!-- 9 THANKS -->
+<!-- 9 INDIVIDUAL CONTRIBUTION -->
+<section class="stage contributions" id="contributions" data-name="Individual contribution" aria-labelledby="icTitle">
+ <div class="wrap">
+  <header class="ic-heading"><div><p class="ic-eyebrow" data-r>GROUP 4 / THE PEOPLE BEHIND THE BUILD</p><h2 class="h-stage" id="icTitle">Individual contribution</h2></div><aside data-r style="--d:1"><b>02</b>BUILDERS / ONE MACHINE</aside></header>
+  <p class="ic-department" data-r style="--d:1">MECHANICAL DEPARTMENT<small>DESIGN → BUILD</small></p>
+  <div class="ic-grid">
+   <article class="ic-person" data-r="left" style="--d:2" aria-labelledby="icBoon">
+    <div class="ic-person-top"><span>01 / DESIGN ENGINEERING</span><span>CAD → CHASSIS</span></div>
+    <div class="ic-portrait"><div class="ic-identity"><p class="ic-surname">SIEW</p><h3 id="icBoon">BOON <span>YU</span></h3><p class="ic-role">FORM. FIT. FOUNDATION.</p></div>
+     <svg class="ic-blueprint" viewBox="0 0 400 270" aria-hidden="true"><defs><linearGradient id="icChassisFill" x2="1" y2="1"><stop stop-color="#45dce3" stop-opacity=".14"/><stop offset="1" stop-color="#45dce3" stop-opacity="0"/></linearGradient></defs><g fill="none" stroke="#70bdcb" opacity=".25"><ellipse cx="245" cy="209" rx="140" ry="32"/><ellipse cx="245" cy="209" rx="115" ry="24"/><path d="M110 25v220M375 25v220M115 230h255" stroke-dasharray="3 6"/></g><g class="ic-drawing" stroke="#74e5e0" stroke-width="1.5" stroke-linejoin="round"><path d="M125 158l117-83 135 61-115 87z" fill="url(#icChassisFill)"/><path d="M125 158v9l137 65 115-87v-9M262 223v9" fill="none"/><path d="M167 139v-42l15-10v43m-15-33 16 7v36M289 119V79l15-10v43m-15-33 15 8v34M224 192v-32l12-9v36m-12-27 12 6" fill="#0f3544"/><g fill="#071e2e"><ellipse cx="215" cy="144" rx="4" ry="2.5"/><ellipse cx="250" cy="124" rx="4" ry="2.5"/><ellipse cx="292" cy="150" rx="4" ry="2.5"/><ellipse cx="253" cy="176" rx="4" ry="2.5"/></g><path d="M150 169l44-33m-22 44 45-33m-22 44 45-33m-22 44 45-33m-22 44 45-33" stroke-width=".65" opacity=".3"/></g><path class="ic-signal" d="M124 158l118-83 135 61-115 87z" fill="none" stroke="#c2ffef" stroke-width="2"/><g fill="#86b5c4" font-family="monospace" font-size="8"><text x="215" y="44">CHASSIS / CAD</text><text x="235" y="255">COMPONENT LAYOUT</text></g></svg>
+    </div>
+    <ul class="ic-tasks"><li><span>01</span>Chassis CAD design</li><li><span>02</span>Components layout on chassis</li></ul><div class="ic-person-bottom" aria-hidden="true"></div>
+   </article>
+   <article class="ic-person" data-r="right" style="--d:3" aria-labelledby="icJun">
+    <div class="ic-person-top"><span>02 / MECHANISM ENGINEERING</span><span>GRIPPER → ROBOT</span></div>
+    <div class="ic-portrait"><div class="ic-identity"><p class="ic-surname">ENG</p><h3 id="icJun">JUN <span>QUAN</span></h3><p class="ic-role">MOTION. GRIP. ASSEMBLY.</p></div>
+     <svg class="ic-blueprint" viewBox="0 0 400 270" aria-hidden="true"><g fill="none" stroke="#8c9ace" opacity=".2"><circle cx="257" cy="122" r="91"/><circle cx="257" cy="122" r="104" stroke-dasharray="3 7"/><path d="M147 122h220M257 12v220"/></g><g class="ic-drawing" fill="none" stroke="#a9bdff" stroke-width="1.5"><path d="M180 190h169v20H180z" fill="#1a2f4b"/><g class="ic-rack"><path d="M180 184v-9h10v9h10v-9h10v9h10v-9h10v9h10v-9h10v9h10v-9h10v9h10v-9h10v9h10v-9h10v9h10v-9h10v9"/><path d="M329 184v-35h17v55" fill="#1f3c5b"/></g><path d="M186 190v-40h-16v60M188 203h-18" fill="#1f3c5b"/><g class="ic-gear"><path d="M249 62h16l3 15 12 5 13-8 12 12-8 13 5 12 15 3v16l-15 3-5 12 8 13-12 12-13-8-12 5-3 15h-16l-3-15-12-5-13 8-12-12 8-13-5-12-15-3v-16l15-3 5-12-8-13 12-12 13 8 12-5z" fill="#243e60"/><circle cx="257" cy="122" r="35"/><circle cx="257" cy="122" r="9" fill="#132439"/><path d="M257 87v20m0 30v20m-35-35h20m30 0h20" opacity=".5"/></g><path d="M185 224h163" stroke-dasharray="4 7"/><path class="ic-signal" d="M185 224h163" stroke="#e2e8ff" stroke-width="2"/></g><g fill="#9babd1" font-family="monospace" font-size="8"><text x="215" y="39">GRIPPER / MECHANISM</text><text x="228" y="255">ROBOT ASSEMBLY</text></g></svg>
+    </div>
+    <ul class="ic-tasks"><li><span>01</span>Gripper mechanism design</li><li><span>02</span>Assembly of the robot</li></ul><div class="ic-person-bottom" aria-hidden="true"></div>
+   </article>
+  </div>
+  <footer class="ic-footer" data-r style="--d:4"><strong>FROM DIGITAL GEOMETRY TO A WORKING ROBOT.</strong><span>MECHANICAL / GROUP 4</span></footer>
+ </div>
+</section>
+
+<!-- 10 THANKS -->
 <section class="stage thanks" id="thanks" data-name="Thank you" aria-labelledby="thxH">
   <canvas id="rain" aria-hidden="true"></canvas>
   <svg class="traces" style="right:0;top:0;width:340px;height:260px;transform:scaleX(-1)" viewBox="0 0 340 260" aria-hidden="true">
