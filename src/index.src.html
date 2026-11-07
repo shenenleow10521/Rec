@@ -832,6 +832,8 @@ body{font-size:20px}
 @media(max-width:1000px){.programming [data-r]{opacity:1;transform:none;filter:none}.stage.programming{padding:82px 24px 90px}.pg-grid{grid-template-columns:1fr;gap:25px;max-width:600px;margin:0 auto}.pg-heading{align-items:flex-start}.pg-heading .h-stage{font-size:clamp(33px,5.8vw,52px)}.pg-heading .pg-intro{font-size:14px}.pg-total{font-size:64px}.pg-total small{font-size:8px}.pg-art{height:310px;padding:25px 40px}.pg-terminal{max-width:420px}.pg-code{font-size:13px}.pg-browser{max-width:390px}.pg-copy p{max-width:none;min-height:0}.pg-footer{flex-direction:column;align-items:flex-start;gap:9px}.pg-phone-shell{--phone-scale:1}}
 @media(max-width:550px){.pg-heading{gap:12px}.pg-heading .h-stage{font-size:32px;max-width:10ch;line-height:1.05}.pg-total{font-size:52px;padding-top:6px}.pg-art{padding:20px;height:295px}.pg-code{font-size:11px}.pg-copy h3{font-size:28px}.pg-heading .pg-intro{max-width:27ch}.pg-footer{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.pg-phone-shell,.pg-caret,.pg-mini-slide,.pg-running .pg-link::after{animation:none!important}.pg-phone-shell{transform:scale(var(--phone-scale))}.pg-card,.pg-code-row,.pg-button,.pg-remote-unit,.pg-mini-dots i{transition:none}}
+/* Department headings stay prominent across all four department slides. */
+.stage .department-label{font-size:clamp(18px,1.55vw,26px);font-weight:600;line-height:1.35;letter-spacing:.1em}
 </style>
 </head>
 <body>
@@ -967,7 +969,7 @@ body{font-size:20px}
 <section class="stage mechanical" id="mechanical" data-name="Mechanical department" aria-labelledby="mechH">
   <div class="wrap">
     <header class="mech-heading">
-      <div><p class="mech-kicker" data-r>MECHANICAL DEPARTMENT / GROUP 4</p><h2 class="h-stage" id="mechH">Body &amp; chassis</h2></div>
+      <div><p class="mech-kicker department-label" data-r>MECHANICAL DEPARTMENT / GROUP 4</p><h2 class="h-stage" id="mechH">Body &amp; chassis</h2></div>
       <div class="mech-tools" data-r style="--d:1"><p>A printed body.<br>A carefully layered build.</p><button class="mech-replay" type="button" aria-label="Replay mechanical build animation" title="Replay build">↻</button></div>
     </header>
     <div class="mech-grid">
@@ -999,7 +1001,7 @@ body{font-size:20px}
 <!-- 6 PICK-UP MECHANISM -->
 <section class="stage pickup" id="pickup" data-name="Pick-up mechanism" aria-labelledby="pickupH">
  <div class="wrap">
-  <header class="pickup-head"><div><p class="mech-kicker" data-r>MECHANICAL DEPARTMENT / GROUP 4</p><h2 class="h-stage" id="pickupH">Pick-up mechanism</h2></div><p data-r style="--d:1">Servo rotation.<br>Linear gripping motion.</p></header>
+  <header class="pickup-head"><div><p class="mech-kicker department-label" data-r>MECHANICAL DEPARTMENT / GROUP 4</p><h2 class="h-stage" id="pickupH">Pick-up mechanism</h2></div><p data-r style="--d:1">Servo rotation.<br>Linear gripping motion.</p></header>
   <div class="pickup-layout">
    <div class="pickup-lab" data-r="zoom" style="--d:2">
     <div class="pickup-lab-top"><span class="pickup-live">KINEMATIC DEMO</span><span>ROTATION → TRANSLATION</span></div>
@@ -1033,7 +1035,7 @@ body{font-size:20px}
 </section>
 
 <!-- 7 ELECTRONICS -->
-<section class="stage electronics detailed-wiring" id="electronics" data-name="Electronics · Complete wiring" data-focus="nano" aria-labelledby="electronicsH"><div class="wrap"><header class="e-head"><div><p class="mech-kicker" data-r>ELECTRONICS DEPARTMENT / GROUP 4</p><h2 class="h-stage" id="electronicsH">Complete wiring &amp; protection</h2></div><p data-r style="--d:1">Every component.<br>Every connection in motion.</p></header><div class="dw-workbench" data-r style="--d:2"><div class="dw-toolbar"><div class="dw-legend"><span class="dw-key power">POWER</span><span class="dw-key five">5 V RAIL</span><span class="dw-key control">CONTROL</span><span class="dw-key serial">SERIAL</span><span class="dw-key ground">GND</span></div><div class="e-controls"><button type="button" id="dwInspectOpen" aria-haspopup="dialog">Inspect ↗</button><button type="button" id="ePause" aria-pressed="false">Pause</button><button type="button" id="eMaster" aria-pressed="false">Power off</button><button type="button" id="eTrip" aria-pressed="false">Fuse trip</button><button type="button" id="eReverse" aria-pressed="false">Reverse motors</button></div></div><svg class="dw-svg" id="dwSvg" viewBox="0 0 1750 775" role="group" aria-label="Hand-built detailed electronics illustration with individual power, motor, control, servo and serial wires. Pin routing is illustrative; confirm actual assignments in firmware."><defs>
+<section class="stage electronics detailed-wiring" id="electronics" data-name="Electronics · Complete wiring" data-focus="nano" aria-labelledby="electronicsH"><div class="wrap"><header class="e-head"><div><p class="mech-kicker department-label" data-r>ELECTRONICS DEPARTMENT / GROUP 4</p><h2 class="h-stage" id="electronicsH">Complete wiring &amp; protection</h2></div><p data-r style="--d:1">Every component.<br>Every connection in motion.</p></header><div class="dw-workbench" data-r style="--d:2"><div class="dw-toolbar"><div class="dw-legend"><span class="dw-key power">POWER</span><span class="dw-key five">5 V RAIL</span><span class="dw-key control">CONTROL</span><span class="dw-key serial">SERIAL</span><span class="dw-key ground">GND</span></div><div class="e-controls"><button type="button" id="dwInspectOpen" aria-haspopup="dialog">Inspect ↗</button><button type="button" id="ePause" aria-pressed="false">Pause</button><button type="button" id="eMaster" aria-pressed="false">Power off</button><button type="button" id="eTrip" aria-pressed="false">Fuse trip</button><button type="button" id="eReverse" aria-pressed="false">Reverse motors</button></div></div><svg class="dw-svg" id="dwSvg" viewBox="0 0 1750 775" role="group" aria-label="Hand-built detailed electronics illustration with individual power, motor, control, servo and serial wires. Pin routing is illustrative; confirm actual assignments in firmware."><defs>
 <linearGradient id="dwPcb" x2="1" y2="1"><stop stop-color="#1c5b62"/><stop offset="1" stop-color="#0b2838"/></linearGradient>
 <linearGradient id="dwNano" x2="0" y2="1"><stop stop-color="#226a8f"/><stop offset="1" stop-color="#12364c"/></linearGradient>
 <linearGradient id="dwMetal" x2="0" y2="1"><stop stop-color="#d7eaf3"/><stop offset=".5" stop-color="#5b8097"/><stop offset="1" stop-color="#abc6d6"/></linearGradient>
@@ -1076,7 +1078,7 @@ body{font-size:20px}
 <!-- 8 PROGRAMMING -->
 <section class="stage programming" id="programming" data-name="Programming department" aria-labelledby="pgTitle">
  <div class="wrap">
-  <header class="pg-heading"><div><p class="pg-kicker" data-r>PROGRAMMING DEPARTMENT / GROUP 4</p><h2 class="h-stage" id="pgTitle">Code. Control. Present.</h2><p class="pg-intro" data-r style="--d:1">Three things we built: the firmware, the controller and this presentation.</p></div><div class="pg-total" aria-hidden="true" data-r style="--d:2">03<small>SOFTWARE BUILDS</small></div></header>
+  <header class="pg-heading"><div><p class="pg-kicker department-label" data-r>PROGRAMMING DEPARTMENT / GROUP 4</p><h2 class="h-stage" id="pgTitle">Code. Control. Present.</h2><p class="pg-intro" data-r style="--d:1">Three things we built: the firmware, the controller and this presentation.</p></div><div class="pg-total" aria-hidden="true" data-r style="--d:2">03<small>SOFTWARE BUILDS</small></div></header>
   <div class="pg-grid">
    <article class="pg-card" data-r style="--d:2">
     <div class="pg-card-top"><span>01 / EMBEDDED</span><b>ARDUINO NANO</b></div>
